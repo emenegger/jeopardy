@@ -1,0 +1,1 @@
+export const CATEGORIES_QUERY = 'https://jservice.io/api/category?id=';
