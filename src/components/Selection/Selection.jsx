@@ -60,7 +60,6 @@ function Selection() {
             </li>
           </ul>
         </div>
-        <PlayersSelection />
       </main>
       <button
         disabled={boardData.length === 6 && players.length > 0 ? false : true} //* refactor this

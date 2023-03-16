@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { showQuestion } from "./questionSlice";
-import { addPointsToPlayer } from "../Players/playersSlice";
+// import { addPointsToPlayer } from "../Players/playersSlice";
+import AddPointsButton from "./AddPointsButton";
 
 const QuestionModal = () => {
   const question = useSelector((state) => state.question.currentQuestion);
   const players = useSelector((state) => state.players.players);
   const [showAnswer, setShowAnswer] = useState(false);
+  // const [showAddedPoints, setShowAddedPoints] = useState(false)
   const dispatch = useDispatch();
+
 
   return (
     <>
@@ -40,19 +43,7 @@ const QuestionModal = () => {
             <div className={styles.actionsContainer}>
               {players.map((player) => {
                 return (
-                  <button
-                    key={player.id}
-                    onClick={() =>
-                      dispatch(
-                        addPointsToPlayer({
-                          id: player.id,
-                          points: question.value,
-                        })
-                      )
-                    }
-                  >
-                    {player.name}
-                  </button>
+                  <AddPointsButton id={player.id} name={player.name} value={question.value} key={player.id} />
                 );
               })}
             </div>

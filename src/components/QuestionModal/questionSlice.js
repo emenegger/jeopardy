@@ -15,7 +15,7 @@ const questionSlice = createSlice({
     setCurrentQuestion: (state, action) => {
       const { question, value, answer, category } = action.payload;
       state.currentQuestion = { question, value, answer, category };
-      console.log(state.currentQuestion);
+      // console.log(state.currentQuestion);
     },
     showQuestion: (state) => {
       state.toggleModal = !state.toggleModal;

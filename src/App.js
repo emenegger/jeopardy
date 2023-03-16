@@ -8,6 +8,7 @@ import { setAvailableCategories } from "./components/Board/boardSlice";
 import Selection from "./components/Selection/Selection";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 import PlayersDisplay from "./components/Players/PlayersDisplay";
+import SelectionWrapper from "./components/Selection/SelectionWrapper";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,9 +35,8 @@ function App() {
 
   return (
     <div className="App">
-      {displayBoard ? <BigBoard /> : <Selection />}
+      {displayBoard ? <BigBoard /> : <SelectionWrapper />}
       {showQuestion && <QuestionModal />}
-      <PlayersDisplay />
     </div>
   );
 }

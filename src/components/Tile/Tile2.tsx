@@ -1,9 +1,12 @@
+/*
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { useDispatch } from "react-redux";
 import { setCurrentQuestion, showQuestion } from "../QuestionModal/questionSlice";
+import { ClueData } from "./types";
 
-const Tile = ({ clueData, category }) => {
+const Tile2 = ({ clueData: ClueData, category: string }) => {
+
   const dispatch = useDispatch();
   const [answered, setAnswered] = useState(false)
 
@@ -29,4 +32,5 @@ const Tile = ({ clueData, category }) => {
   }
 };
 
-export default Tile;
+export default Tile2;
+*/
