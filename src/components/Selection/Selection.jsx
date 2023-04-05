@@ -7,6 +7,7 @@ import {
 } from "../Board/boardSlice"; //* update this to make selection its own slice
 import styles from "./styles.module.scss";
 import { CATEGORIES_QUERY } from "./constants";
+import CategoryButton from "../Button/Button";
 
 // this is doing too much - goes against the single responsiblity principle
 
@@ -19,7 +20,7 @@ function Selection() {
   const players = useSelector((state) => state.players);
 
   const dispatch = useDispatch();
-  
+
   // dispatch action to set board and categories
   const addCategoryData = async (categoryData) => {
     // fetch the actual data based on the id
@@ -36,32 +37,14 @@ function Selection() {
       <main>
         <div>
           <h2>Select Six Categories</h2>
-          <ul>
-            {availableCategories?.map((category) => {
-              return (
-                <li key={category.id}>
-                  {category.title}{" "}
-                  <button onClick={() => addCategoryData(category)}>
-                    Select
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          {availableCategories?.map((category) => <CategoryButton key={category.id} category={category} type={'Select'} />)}
         </div>
         <div>
           <h2>Your Categories</h2>
-          <ul>
-            {boardData.map((ele) => (
-              <li key={ele.id}>
-                {ele.title}{" "}
-                <button onClick={() => removeCategoryData(ele)}>Remove</button>{" "}
-              </li>
-            ))}
+            {boardData.map(ele => <CategoryButton key={ele.id} category={ele} type={'Remove'} />)}
             <li>
               <b>Select {6 - boardData.length} more categories</b>
             </li>
-          </ul>
         </div>
       </main>
       <button
