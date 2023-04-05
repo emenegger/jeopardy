@@ -1,13 +1,10 @@
-import logo from "./logo.svg";
 import "./App.scss";
 import BigBoard from "./components/Board/BigBoard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchBoardData } from "./actions/boardActions";
 import { setAvailableCategories } from "./components/Board/boardSlice";
-import Selection from "./components/Selection/Selection";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
-import PlayersDisplay from "./components/Players/PlayersDisplay";
 import SelectionWrapper from "./components/Selection/SelectionWrapper";
 
 function App() {

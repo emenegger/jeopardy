@@ -7,14 +7,17 @@ import {
 } from "../Board/boardSlice"; //* update this to make selection its own slice
 import styles from "./styles.module.scss";
 import { CATEGORIES_QUERY } from "./constants";
-import PlayersSelection from "../Players/PlayersInput";
+
+// this is doing too much - goes against the single responsiblity principle
 
 function Selection() {
   const availableCategories = useSelector(
     (state) => state.board.availableCategories
   );
   const boardData = useSelector((state) => state.board.boardData);
-  const players = useSelector((state) => state.players.players);
+  // const players = useSelector((state) => state.players.players);
+  const players = useSelector((state) => state.players);
+
   const dispatch = useDispatch();
   
   // dispatch action to set board and categories

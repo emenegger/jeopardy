@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 
 const PlayersDisplay = () => {
-  const players = useSelector((state) => state.players.players);
+  const players = useSelector((state) => state.players);
 
   return (
     <div className={styles.playerTable}>

@@ -2,28 +2,27 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 const playersSlice = createSlice({
   name: "players",
-  initialState: {
-    // * Can I just initiliaze initial state to an empty array instead of adding a players property?
-    players: [],
-  },
+  initialState: [],
+  // initialState: {
+  //   players: [],
+  // },
   reducers: {
     addPlayer: (state, action) => {
-      state.players = [...state.players, action.payload];
+      // state = [...state, action.payload];
+      return [...state, action.payload];
+      // state.players = [...state.players, action.payload];
     },
     addPointsToPlayer: (state, action) => {
-      console.log(action.payload.points);
-      const i = state.players.findIndex(
+      const i = state.findIndex(
         (player) => player.id === action.payload.id
       );
-      console.log(state.players[i]);
-      state.players = [
-        ...state.players.slice(0, i),
-        Object.assign({}, state.players[i], {
-          points: (state.players[i].points += action.payload.points),
+      state = [
+        ...state.slice(0, i),
+        Object.assign({}, state[i], {
+          points: (state[i].points += action.payload.points),
         }),
-        ...state.players.slice(i + 1),
+        ...state.slice(i + 1),
       ];
-      console.log(current(state))
     },
   },
 });

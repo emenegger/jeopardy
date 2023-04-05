@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentQuestion, showQuestion } from "../QuestionModal/questionSlice";
 
 const Tile = ({ clueData, category }) => {
+  // const {question, value, answer, category} = clueData; //* this doesn't destructure during some fetch calls, why?
   const dispatch = useDispatch();
   const [answered, setAnswered] = useState(false)
 

@@ -7,7 +7,7 @@ import AddPointsButton from "./AddPointsButton";
 
 const QuestionModal = () => {
   const question = useSelector((state) => state.question.currentQuestion);
-  const players = useSelector((state) => state.players.players);
+  const players = useSelector((state) => state.players);
   const [showAnswer, setShowAnswer] = useState(false);
   // const [showAddedPoints, setShowAddedPoints] = useState(false)
   const dispatch = useDispatch();
