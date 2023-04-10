@@ -10,7 +10,6 @@ const BigBoard = () => {
   return (
     <div className={styles.board}>
       <h1>Jeopardy!</h1>
-      
       <ul>
         {boardData.length && boardData.map((col, i) => {
           return <Column columnData={col} key={`column${i}`}/>;
