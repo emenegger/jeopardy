@@ -12,12 +12,10 @@ export const boardSlice = createSlice({
   reducers: {
     setAvailableCategories: (state, action) => {
       state.availableCategories = action.payload;
-      // console.log(current(state));
     },
     addBoardData: (state, action) => {
       if (state.boardData.length < 6)
         state.boardData = [...state.boardData, action.payload];
-      // console.log(current(state));
     },
     removeBoardData: (state, action) => {
       const i = state.boardData.findIndex(

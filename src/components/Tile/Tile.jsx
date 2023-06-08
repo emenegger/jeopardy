@@ -12,8 +12,8 @@ const Tile = ({ clueData, category }) => {
     e.preventDefault();
     // dispatch(setCurrentQuestion({question, value, answer, category}));
     dispatch(setCurrentQuestion({ question: clueData.question, value: clueData.value, answer: clueData.answer, category }));
-    dispatch(showQuestion())
-    setAnswered(true)
+    dispatch(showQuestion());
+    setAnswered(true);
   };
   if (answered) {
     return (
