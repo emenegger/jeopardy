@@ -13,6 +13,6 @@ export const fetchCategories = async () => {
   const data = await response.json();
   const fiveOrMoreClues = data
     .filter((d) => d.clues_count >= 5 && d.id)
-    .slice(0, 25);
+    // .slice(0, 25);
   return fiveOrMoreClues;
 }

@@ -2,29 +2,30 @@ import React, { forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   toggleBoardDisplay,
+  incrementCategoryPage
 } from "../Board/boardSlice"; //* update this to make selection its own slice
 import styles from "./styles.module.scss";
-import { CATEGORIES_QUERY } from "./constants";
+// import { CATEGORIES_QUERY } from "./constants";
 import CategoryListItem from "./CategoryListItem";
+import { getCurrentCategories } from "../../selectors/categories";
 
 // this is doing too much - goes against the single responsiblity principle
 
 const Selection = forwardRef(function Selection(props, ref) {
-  const availableCategories = useSelector(
-    (state) => state.board.availableCategories
-  );
   const boardData = useSelector((state) => state.board.boardData);
-  // const players = useSelector((state) => state.players.players);
+  const pageNumber = useSelector((state) => state.board.categoryPage);
   const players = useSelector((state) => state.players);
-
   const dispatch = useDispatch();
+  const currentCategories = useSelector(getCurrentCategories);
+  console.log('curr cat', currentCategories)
+  console.log('curr page', pageNumber)
 
   return (
     <div ref={ref} className={styles.selectionContainer}>
      
         <div>
           <h2>Select Six Categories</h2>
-          {availableCategories?.map((category) => (
+          {currentCategories?.map((category) => (
             <CategoryListItem
               key={category.id}
               category={category}
@@ -32,6 +33,8 @@ const Selection = forwardRef(function Selection(props, ref) {
             />
           ))}
         </div>
+        <h3>Page {pageNumber}</h3>
+        <button onClick={() => dispatch(incrementCategoryPage())}>+</button>
         <div>
           <h2>Your Categories</h2>
           {boardData.map((ele) => (

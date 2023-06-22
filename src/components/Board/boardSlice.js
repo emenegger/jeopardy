@@ -1,16 +1,17 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"; // add current here to see current state
 
 const initialState = {
   boardData: [],
   availableCategories: [],
   displayBoard: false,
+  categoryPage: 0,
 };
 
 export const boardSlice = createSlice({
   name: "board",
   initialState,
   reducers: {
-    setAvailableCategories: (state, action) => {
+    setAllCategories: (state, action) => {
       state.availableCategories = action.payload;
     },
     addBoardData: (state, action) => {
@@ -28,15 +29,23 @@ export const boardSlice = createSlice({
     },
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
+    },
+    incrementCategoryPage: (state) => {
+      state.categoryPage = ++state.categoryPage
+    },
+    decrementCategoryPage: (state) => {
+      state.categoryPage = state.categoryPage --
     }
   },
 });
 
 export const {
   toggleBoardDisplay,
-  setAvailableCategories,
+  setAllCategories,
   addBoardData,
   removeBoardData,
+  incrementCategoryPage,
+  decrementCategoryPage,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

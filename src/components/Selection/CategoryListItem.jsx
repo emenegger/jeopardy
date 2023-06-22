@@ -1,6 +1,6 @@
 import React from "react";
 import { addBoardData, removeBoardData } from "../Board/boardSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./styles.module.scss";
 
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
