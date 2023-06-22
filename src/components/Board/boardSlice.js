@@ -34,7 +34,7 @@ export const boardSlice = createSlice({
       state.categoryPage = ++state.categoryPage
     },
     decrementCategoryPage: (state) => {
-      state.categoryPage = state.categoryPage --
+      state.categoryPage = --state.categoryPage
     }
   },
 });
