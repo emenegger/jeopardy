@@ -34,7 +34,7 @@ const QuestionModal = () => {
               <h2>{question.answer}</h2>
             ) : (
               <button onClick={() => setShowAnswer(!showAnswer)}>
-                reveal answer
+                Reveal Answer
               </button>
             )}
           </div>

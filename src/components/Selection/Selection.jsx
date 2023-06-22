@@ -22,10 +22,6 @@ const Selection = forwardRef(function Selection(props, ref) {
   const dispatch = useDispatch();
   const currentCategories = useSelector(getCurrentCategories);
   const totalPages = useSelector(getTotalPagesOfCategories);
-  const showButton = (direction) => {
-    // if direction is up and currentCategories is less than 15 then return true
-    return direction === "up" && currentCategories.length < 15;
-  };
 
   return (
     <div ref={ref} className={styles.selectionContainer}>
@@ -39,6 +35,7 @@ const Selection = forwardRef(function Selection(props, ref) {
           />
         ))}
       </div>
+      {/* this should be it's own component */}
       <h3>Page {pageNumber + 1}</h3>
       <button
         disabled={!pageNumber}
@@ -52,6 +49,7 @@ const Selection = forwardRef(function Selection(props, ref) {
       >
         +
       </button>
+      {/* this should be its own component */}
       <div>
         <h2>Your Categories</h2>
         {boardData.map((ele) => (
