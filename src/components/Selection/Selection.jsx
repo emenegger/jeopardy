@@ -5,7 +5,7 @@ import {
   removeBoardData,
   toggleBoardDisplay,
 } from "../Board/boardSlice"; //* update this to make selection its own slice
-import styles from "./styles.module.scss";
+// import styles from "./styles.module.scss";
 import { CATEGORIES_QUERY } from "./constants";
 
 // this is doing too much - goes against the single responsiblity principle

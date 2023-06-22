@@ -12,7 +12,7 @@ export const boardSlice = createSlice({
   reducers: {
     setAvailableCategories: (state, action) => {
       state.availableCategories = action.payload;
-      // console.log(current(state));
+      console.log(current(state));
     },
     addBoardData: (state, action) => {
       if (state.boardData.length < 6)

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PlayerForm from "./PlayerForm";
-import styles from './styles.module.scss'
+// import styles from './styles.module.scss'
 
 const PlayersSelection = () => {
   const [numPlayers, setNumPlayers] = useState([]);

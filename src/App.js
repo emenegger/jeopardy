@@ -2,14 +2,14 @@ import "./App.scss";
 import BigBoard from "./components/Board/BigBoard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchBoardData } from "./actions/boardActions";
+// import { fetchBoardData } from "./actions/boardActions";
 import { setAvailableCategories } from "./components/Board/boardSlice";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 import SelectionWrapper from "./components/Selection/SelectionWrapper";
 
 function App() {
   const dispatch = useDispatch();
-  const boardData = useSelector((state) => state.board.boardData);
+  // const boardData = useSelector((state) => state.board.boardData);
   const displayBoard = useSelector((state) => state.board.displayBoard);
   const showQuestion = useSelector((state) => state.question.toggleModal);
 
@@ -28,7 +28,7 @@ function App() {
       dispatch(setAvailableCategories(fiveOrMoreClues));
     };
     fetchCategories();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
