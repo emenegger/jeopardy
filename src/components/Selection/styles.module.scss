@@ -7,5 +7,18 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+  align-items: center;
+  // height: 100vh;
+}
+
+.selectListItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectionContainer {
+  // border: solid black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
