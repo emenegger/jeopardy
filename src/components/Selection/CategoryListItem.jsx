@@ -21,7 +21,7 @@ const CategoryListItem = ({ category, type }) => {
 
   return (
     <li className={styles.selectListItem}>
-      {category.title.slice(0, 1).toUpperCase() + category.title.slice(1)}
+      {category.title}
       <button
         onClick={
           type === "Select"
