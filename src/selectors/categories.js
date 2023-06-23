@@ -1,11 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const selectAllCategories = (state) => state.board.availableCategories;
-const selectPageNumber = (state) => state.board.categoryPage;
+export const selectAllCategories = (state) => state.board.availableCategories;
+export const selectPageNumber = (state) => state.board.categoryPage;
+export const selectBoardData = (state) => state.board.boardData;
 
 const perPage = 15
 
-export const getCurrentCategories = createSelector(
+export const getPaginatedCategories = createSelector(
   selectAllCategories,
   selectPageNumber,
   (categories, pageNumber) => 
@@ -17,3 +18,10 @@ export const getTotalPagesOfCategories = createSelector(
   (categories) =>{
     return Math.ceil(categories.length / perPage)
 });
+
+// export const selectId = createSelector(
+//   selectBoardData,
+//   (addedCategories) => {
+//     addedCategories.find(category => category.id === Number(id))
+//   }
+// )

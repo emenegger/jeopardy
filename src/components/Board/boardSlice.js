@@ -24,6 +24,7 @@ export const boardSlice = createSlice({
         ...state.availableCategories.slice(0, i),
         ...state.availableCategories.slice(i + 1),
       ];
+      console.log(current(state))
     },
     removeBoardData: (state, action) => {
       // console.log("removing", action.payload);
@@ -35,16 +36,16 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(i + 1),
       ];
       // create function to find it's index by it's place in the alphabet
-      
+
       // const j = state.availableCategories.findIndex(
-      //   (data) => data.id === action.payload.id
+      //   (data) => action.payload.title > data.title
       // );
-      // console.log(j)
-      // state.availableCategories = [
-      //   ...state.availableCategories.slice(0, j),
-      //   action.payload,
-      //   ...state.availableCategories.slice(j + 1),
-      // ];
+      const j = 1;
+      state.availableCategories = [
+        ...state.availableCategories.slice(0, j),
+        action.payload,
+        ...state.availableCategories.slice(j + 1),
+      ];
     },
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
