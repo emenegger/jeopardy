@@ -1,7 +1,6 @@
 import "./App.scss";
 import BigBoard from "./components/Board/BigBoard";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { setAllCategories } from "./components/Board/boardSlice";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 // import SelectionWrapper from "./components/Selection/SelectionWrapper";

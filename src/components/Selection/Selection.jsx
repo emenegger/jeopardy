@@ -14,17 +14,21 @@ const Selection = () => {
   const players = useSelector((state) => state.players);
 
   return (
-    <div className={styles.selectionContainer}>
-      <CategoryList />
-      <Pagination />
-      <SelectedCategories />
-      <Link to="../board">
-        <button
-          disabled={boardData.length === 6 && players.length > 0 ? false : true} //* refactor this
-        >
-          Ready to Start?
-        </button>
-      </Link>
+    <div className={styles.wrapper}>
+      <div className={styles.selectionContainer}>
+        <CategoryList />
+        <Pagination />
+        <SelectedCategories />
+        <Link to="../board">
+          <button
+            disabled={
+              boardData.length === 6 && players.length > 0 ? false : true
+            } //* refactor this
+          >
+            Ready to Start?
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
