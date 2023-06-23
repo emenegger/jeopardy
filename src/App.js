@@ -22,9 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* {!showSelection && <HeroPage setShowSelection={setShowSelection}/>}
-      {displayBoard ? <BigBoard /> : <SelectionWrapper />}
-      {showQuestion && <QuestionModal />} */}
+      {showQuestion && <QuestionModal />} 
       <Routes>
         <Route path="/" element={<HeroPage />} />
         <Route path="selection" element={<SelectionWrapper />} />
