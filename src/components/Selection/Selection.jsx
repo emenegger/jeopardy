@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 //* update this to make selection its own slice
 import styles from "./styles.module.scss";
@@ -9,12 +9,12 @@ import SelectedCategories from "./SelectedCategories";
 
 // this is doing too much - goes against the single responsiblity principle
 
-const Selection = forwardRef(function Selection(props, ref) {
+const Selection = () => {
   const boardData = useSelector((state) => state.board.boardData);
   const players = useSelector((state) => state.players);
 
   return (
-    <div ref={ref} className={styles.selectionContainer}>
+    <div className={styles.selectionContainer}>
       <CategoryList />
       <Pagination />
       <SelectedCategories />
@@ -27,6 +27,6 @@ const Selection = forwardRef(function Selection(props, ref) {
       </Link>
     </div>
   );
-});
+};
 
 export default Selection;
