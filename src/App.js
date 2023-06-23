@@ -15,16 +15,13 @@ function App() {
   const dispatch = useDispatch();
   const showQuestionSelector = (state) => state.question.toggleModal; // this would be in a separate file in a selectors folder and imported in
   const showQuestion = useSelector(showQuestionSelector);
-  const sortByName = (array) =>
-    array.sort((a, b) => (a.title < b.title ? -1 : a.title > b.title ? 1 : 0));
 
   const { isLoading, error, data } = useQuery(
     "fetchCategories",
     fetchCategories
   );
   if (data) {
-    const sortedResponse = sortByName([...data]);
-    dispatch(setAllCategories(sortedResponse));
+    dispatch(setAllCategories(data));
   }
 
   return (

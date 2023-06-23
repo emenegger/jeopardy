@@ -1,10 +1,11 @@
 import CategoryListItem from "./CategoryListItem";
 import { getCurrentCategories } from "../../selectors/categories";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 
 const CategoryList = () => {
   const currentCategories = useSelector(getCurrentCategories);
+
   return (
     <div>
       <h2>Select Six Categories</h2>
