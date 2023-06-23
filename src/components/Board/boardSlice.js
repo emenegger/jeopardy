@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"; // add current here to see current state
+import { createSlice, current } from "@reduxjs/toolkit"; // add current here to see current state
 
 const initialState = {
   boardData: [],
@@ -15,10 +15,19 @@ export const boardSlice = createSlice({
       state.availableCategories = action.payload;
     },
     addBoardData: (state, action) => {
+      console.log("action", action);
       if (state.boardData.length < 6)
         state.boardData = [...state.boardData, action.payload];
+      const i = state.availableCategories.findIndex(
+        (data) => data.id === action.payload.id
+      );
+      state.availableCategories = [
+        ...state.availableCategories.slice(0, i),
+        ...state.availableCategories.slice(i + 1),
+      ];
     },
     removeBoardData: (state, action) => {
+      // console.log("removing", action.payload);
       const i = state.boardData.findIndex(
         (data) => data.id === action.payload.id
       );
@@ -26,16 +35,26 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(0, i),
         ...state.boardData.slice(i + 1),
       ];
+      // console.log(current(state.availableCategories));
+      const j = state.availableCategories.findIndex(
+        (data) => data.id === action.payload.id
+      );
+      console.log(j)
+      state.availableCategories = [
+        ...state.availableCategories.slice(0, j),
+        action.payload,
+        ...state.availableCategories.slice(j + 1),
+      ];
     },
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
     },
     incrementCategoryPage: (state) => {
-      state.categoryPage = ++state.categoryPage
+      state.categoryPage = ++state.categoryPage;
     },
     decrementCategoryPage: (state) => {
-      state.categoryPage = --state.categoryPage
-    }
+      state.categoryPage = --state.categoryPage;
+    },
   },
 });
 

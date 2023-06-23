@@ -9,12 +9,12 @@ export const getCurrentCategories = createSelector(
   selectAllCategories,
   selectPageNumber,
   (categories, pageNumber) =>
+  // sort this? .sort((a, b) => a.id - b.id)
     categories.slice(pageNumber * perPage, pageNumber * perPage + perPage)
 );
 
 export const getTotalPagesOfCategories = createSelector(
   selectAllCategories,
   (categories) =>{
-    console.log(categories.length)
     return Math.ceil(categories.length / perPage)
 });

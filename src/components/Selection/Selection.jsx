@@ -42,13 +42,13 @@ const Selection = forwardRef(function Selection(props, ref) {
         disabled={!pageNumber}
         onClick={() => dispatch(decrementCategoryPage())}
       >
-        -
+        ⬅️
       </button>
       <button
         disabled={pageNumber - 1 === totalPages}
         onClick={() => dispatch(incrementCategoryPage())}
       >
-        +
+        ➡️
       </button>
       {/* this should be its own component */}
       <div>
