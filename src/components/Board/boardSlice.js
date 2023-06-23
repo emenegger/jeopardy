@@ -35,6 +35,7 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(i + 1),
       ];
       // create function to find it's index by it's place in the alphabet
+      
       // const j = state.availableCategories.findIndex(
       //   (data) => data.id === action.payload.id
       // );
