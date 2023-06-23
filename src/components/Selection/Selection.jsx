@@ -12,6 +12,7 @@ import {
   getCurrentCategories,
   getTotalPagesOfCategories,
 } from "../../selectors/categories";
+import { Link } from "react-router-dom";
 
 // this is doing too much - goes against the single responsiblity principle
 
@@ -60,12 +61,13 @@ const Selection = forwardRef(function Selection(props, ref) {
         </li>
       </div>
 
-      <button
-        disabled={boardData.length === 6 && players.length > 0 ? false : true} //* refactor this
-        onClick={() => dispatch(toggleBoardDisplay())}
-      >
-        Ready to Start?
-      </button>
+      <Link to="../board">
+        <button
+          disabled={boardData.length === 6 && players.length > 0 ? false : true} //* refactor this
+        >
+          Ready to Start?
+        </button>
+      </Link>
     </div>
   );
 });

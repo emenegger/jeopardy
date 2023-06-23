@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import Button from "../Button/Button";
+import { Link } from 'react-router-dom';
 
 const HeroPage = ({setShowSelection}) => {
 
@@ -14,6 +15,9 @@ const HeroPage = ({setShowSelection}) => {
           categories from previous Jeopardy! games.
         </h3>
         <Button className={'getStartedBtn'} label={'Get Started'} clickHandler={setShowSelection}/>
+        <Link to='/selection'>
+          <Button label={'router button'} />
+        </Link>
       </div>
     </div>
   );

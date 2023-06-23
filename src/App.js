@@ -8,6 +8,7 @@ import SelectionWrapper from "./components/Selection/SelectionWrapper";
 import { useQuery } from 'react-query';
 import { fetchCategories } from "./api/categories";
 import HeroPage from "./components/HeroPage/HeroPage";
+import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,9 +22,14 @@ function App() {
 
   return (
     <div className="App">
-      {!showSelection && <HeroPage setShowSelection={setShowSelection}/>}
+      {/* {!showSelection && <HeroPage setShowSelection={setShowSelection}/>}
       {displayBoard ? <BigBoard /> : <SelectionWrapper />}
-      {showQuestion && <QuestionModal />}
+      {showQuestion && <QuestionModal />} */}
+      <Routes>
+        <Route path="/" element={<HeroPage />} />
+        <Route path="selection" element={<SelectionWrapper />} />
+        <Route path="board" element={<BigBoard />} />
+      </Routes>
     </div>
   );
 }
