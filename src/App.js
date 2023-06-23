@@ -16,13 +16,13 @@ function App() {
   const showQuestionSelector = (state) => state.question.toggleModal; // this would be in a separate file in a selectors folder and imported in
   const showQuestion = useSelector(showQuestionSelector);
 
-  const { isLoading, error, data } = useQuery(
-    "fetchCategories",
-    fetchCategories
-  );
-  if (data) {
-    dispatch(setAllCategories(data));
-  }
+  // const { isLoading, error, data } = useQuery(
+  //   "fetchCategories",
+  //   fetchCategories
+  // );
+  // if (data) {
+  //   dispatch(setAllCategories(data));
+  // }
 
   return (
     <div className="App">

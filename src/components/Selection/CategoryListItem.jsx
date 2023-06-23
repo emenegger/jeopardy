@@ -1,6 +1,5 @@
 import React from "react";
 import { addBoardData, removeBoardData } from "../Board/boardSlice";
-import { selectId } from "../../selectors/categories";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 import { selectBoardData } from "../../selectors/categories";
@@ -25,9 +24,9 @@ const CategoryListItem = ({ category, type }) => {
 
   return (
     <li className={styles.selectListItem}>
-      {category.title} {isSelected && <>✅</>}
+      {category.title} {isSelected && type === 'Select' && <>✅</>}
       <button
-        // disabled={isSelected}
+        disabled={isSelected && type === 'Select'}
         onClick={
           type === "Select"
             ? () => addCategoryData(category)

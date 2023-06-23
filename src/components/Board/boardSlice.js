@@ -17,17 +17,11 @@ export const boardSlice = createSlice({
     addBoardData: (state, action) => {
       if (state.boardData.length < 6)
         state.boardData = [...state.boardData, action.payload];
-      const i = state.availableCategories.findIndex(
-        (data) => data.id === action.payload.id
-      );
-      state.availableCategories = [
-        ...state.availableCategories.slice(0, i),
-        ...state.availableCategories.slice(i + 1),
-      ];
-      console.log(current(state))
+      // const i = state.availableCategories.findIndex(
+      //   (data) => data.id === action.payload.id
+      // );
     },
     removeBoardData: (state, action) => {
-      // console.log("removing", action.payload);
       const i = state.boardData.findIndex(
         (data) => data.id === action.payload.id
       );
@@ -35,11 +29,6 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(0, i),
         ...state.boardData.slice(i + 1),
       ];
-      // create function to find it's index by it's place in the alphabet
-
-      // const j = state.availableCategories.findIndex(
-      //   (data) => action.payload.title > data.title
-      // );
       const j = 1;
       state.availableCategories = [
         ...state.availableCategories.slice(0, j),
