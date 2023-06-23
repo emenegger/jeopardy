@@ -12,7 +12,7 @@ const Pagination = () => {
 
   return (
     <div>
-      <h3>Page {pageNumber + 1}</h3>
+      <h3>Page {pageNumber + 1} / {totalPages} </h3>
       <button
         disabled={!pageNumber}
         onClick={() => dispatch(decrementCategoryPage())}
@@ -20,7 +20,7 @@ const Pagination = () => {
         ⬅️
       </button>
       <button
-        disabled={pageNumber - 1 === totalPages}
+        disabled={pageNumber + 1 === totalPages}
         onClick={() => dispatch(incrementCategoryPage())}
       >
         ➡️
