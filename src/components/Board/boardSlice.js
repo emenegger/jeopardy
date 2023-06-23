@@ -15,13 +15,11 @@ export const boardSlice = createSlice({
       state.availableCategories = action.payload;
     },
     addBoardData: (state, action) => {
-      console.log("action", action.payload);
       if (state.boardData.length < 6)
         state.boardData = [...state.boardData, action.payload];
       const i = state.availableCategories.findIndex(
         (data) => data.id === action.payload.id
       );
-      console.log(current(state.availableCategories[i]))
       state.availableCategories = [
         ...state.availableCategories.slice(0, i),
         ...state.availableCategories.slice(i + 1),
@@ -36,16 +34,16 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(0, i),
         ...state.boardData.slice(i + 1),
       ];
-      // you can't find it because it got deleted (ding dong)
-      const j = state.availableCategories.findIndex(
-        (data) => data.id === action.payload.id
-      );
-      console.log(j)
-      state.availableCategories = [
-        ...state.availableCategories.slice(0, j),
-        action.payload,
-        ...state.availableCategories.slice(j + 1),
-      ];
+      // create function to find it's index by it's place in the alphabet
+      // const j = state.availableCategories.findIndex(
+      //   (data) => data.id === action.payload.id
+      // );
+      // console.log(j)
+      // state.availableCategories = [
+      //   ...state.availableCategories.slice(0, j),
+      //   action.payload,
+      //   ...state.availableCategories.slice(j + 1),
+      // ];
     },
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
