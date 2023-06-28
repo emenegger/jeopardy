@@ -1,9 +1,8 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 //* update this to make selection its own slice
 import styles from "./styles.module.scss";
 import CategoryList from "./CategoryList";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import Pagination from "./Pagination";
 import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";

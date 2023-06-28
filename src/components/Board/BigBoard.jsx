@@ -8,9 +8,9 @@ const BigBoard = () => {
   const boardData = useSelector(state => state.board.boardData);
 
   return (
-    <div className={styles.board}>
+    <div className={styles.container}>
       <h1>Jeopardy!</h1>
-      <ul>
+      <ul className={styles.board}>
         {boardData.length && boardData.map((col, i) => {
           return <Column columnData={col} key={`column${i}`}/>;
         })}
