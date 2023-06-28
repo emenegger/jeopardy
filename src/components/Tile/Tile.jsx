@@ -27,7 +27,7 @@ const Tile = ({ clueData, category }) => {
   if (answered) {
     return (
       <div className={styles.inactive}>
-        {/* <h2></h2> */}
+        
       </div>
     );
   } else {

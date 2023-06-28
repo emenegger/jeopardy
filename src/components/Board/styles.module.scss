@@ -1,20 +1,22 @@
 .container {
-  // background-color:black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // background-color: black;
-    padding: none;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  width: 60vw;
 }
 
 .board {
-  width: 60.5%;
-  background-color: black;
+  // background-color:rgb(55, 54, 54);
+  background: radial-gradient(circle, #202020, #4a4848);
+  width: 60vw;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  padding-left: none;
+  border: 6px solid black;
+  box-shadow: #202020 3px 3px 6px 0px inset, #4a4848 -3px -3px 6px 1px inset;
 }
