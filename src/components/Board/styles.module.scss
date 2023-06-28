@@ -4,19 +4,25 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  width: 60vw;
+  // width: 60vw;
+  background-image: url(https://parade.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTkwNTgxMTE3NzUxOTkzNDY5/jeopardy-board.webp);
+  background-size: 90% auto;  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
 }
 
-.board {
+.board {  
   // background-color:rgb(55, 54, 54);
-  background: radial-gradient(circle, #202020, #4a4848);
+  background: radial-gradient(circle, #121212, #282727);
+  margin-top: 75px;
   width: 60vw;
-  padding: 10px;
+  padding: 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   // align-items: center;
   padding-left: none;
-  border: 6px solid black;
-  box-shadow: #202020 3px 3px 6px 0px inset, #4a4848 -3px -3px 6px 1px inset;
+  // border: 6px solid black;
+  // box-shadow: #202020 3px 3px 6px 0px inset, #4a4848 -3px -3px 6px 1px inset;
 }
