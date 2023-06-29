@@ -5,12 +5,9 @@ import styles from "./styles.module.scss";
 import Wager from "./Wager";
 
 const DailyDouble = () => {
-  const question = useSelector((state) => state.question.currentQuestion);
   const players = useSelector((state) => state.players);
-  const [showAnswer, setShowAnswer] = useState(false);
   const [wager, setWager] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
-  const dispatch = useDispatch();
 
   const handleSubmitWager = () =>
     setShowQuestion((prevShowQuestion) => !prevShowQuestion);

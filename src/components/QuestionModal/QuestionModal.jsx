@@ -13,9 +13,7 @@ const QuestionModal = ({wager}) => {
   const dispatch = useDispatch();
 
   const value = wager || question.value;
-  console.log(value)
-  console.log(typeof value)
-  const handleClose = () => wager ? dispatch(showDailyDouble()) : showQuestion()
+  const handleClose = () => wager ? dispatch(showDailyDouble()) : dispatch(showQuestion())
 
   return (
     <>
