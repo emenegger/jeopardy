@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Gloria+Hallelujah&display=swap');
+
 form {
   display: flex;
   flex-direction: column;
+}
+
+.playerContainer {
+  height: 100vh;
 }
 
 .playerTable {
@@ -8,12 +14,29 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 12vh;
+  // background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // margin: 12px;
 }
 
 table {
-  width: 50vw; 
+  max-width: 50vw; 
+  min-width: 30vw;
 }
 
-.playerContainer {
-  height: 100vh;
+
+.points {
+  font-size: 2rem;
+  color: whitesmoke;
+  background: radial-gradient(circle, rgb(22, 91, 209), rgb(8, 48, 118));
+  height: 6vh;
+}
+
+.playerName {
+  font-family: 'Gloria Hallelujah', sans-serif;
+  color: whitesmoke;
+  height: 6vh;
+  font-size: 1.5rem;
+  background: radial-gradient(circle, rgb(22, 91, 209), rgb(8, 48, 118));
 }

@@ -7,21 +7,21 @@ const PlayersDisplay = () => {
 
   return (
     <div className={styles.playerTable}>
-      <h1>Player Points</h1>
+      {/* <h1>Player Points</h1> */}
       <table>
         <thead>
-        <tr>
+        <tr className={styles.points}>
           {players &&
             players.map((player) => {
-              return <th key={player.id}>{player.name}</th>;
+              return <th key={player.id}>${player.points}</th>;
             })}
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr className={styles.playerName}>
           {players &&
             players.map((player) => {
-              return <td key={player.id}>{player.points}</td>;
+              return <td key={player.id}>{player.name}</td>;
             })}
         </tr>
         </tbody>
