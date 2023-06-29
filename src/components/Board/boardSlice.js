@@ -1,6 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit"; // add current here to see current state
 
-const dailyDoubleIndices = [Math.ceil(Math.random(0,1) * 5), Math.ceil(Math.random(0,1) * 5)];
+const dailyDoubleIndices = [Math.ceil(Math.random(0,1) * 5), Math.ceil(Math.random(0,1) * 4)];
 console.log('dailyDoubleIndices', dailyDoubleIndices) 
 
 const initialState = {
