@@ -13,16 +13,12 @@
 }
 
 .board {  
-  // background-color:rgb(55, 54, 54);
-  background: radial-gradient(circle, #121212, #282727);
+  background: radial-gradient(circle, rgba(18, 18, 18, 0.7), rgba(40, 39, 39, 0.99));
   margin-top: 60px;
   width: 60vw;
   padding: 12px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // align-items: center;
   padding-left: none;
-  // border: 6px solid black;
-  // box-shadow: #202020 3px 3px 6px 0px inset, #4a4848 -3px -3px 6px 1px inset;
 }

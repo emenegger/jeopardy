@@ -12,7 +12,6 @@ const QuestionModal = () => {
   // const [showAddedPoints, setShowAddedPoints] = useState(false)
   const dispatch = useDispatch();
 
-
   return (
     <>
       <div className={styles.darkBG} />
@@ -43,7 +42,12 @@ const QuestionModal = () => {
             <div className={styles.actionsContainer}>
               {players.map((player) => {
                 return (
-                  <AddPointsButton id={player.id} name={player.name} value={question.value} key={player.id} />
+                  <AddPointsButton
+                    id={player.id}
+                    name={player.name}
+                    value={question.value}
+                    key={player.id}
+                  />
                 );
               })}
             </div>
