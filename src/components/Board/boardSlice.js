@@ -1,10 +1,14 @@
 import { createSlice, current } from "@reduxjs/toolkit"; // add current here to see current state
 
+const dailyDoubleIndices = [Math.ceil(Math.random(0,1) * 5), Math.ceil(Math.random(0,1) * 5)];
+console.log('dailyDoubleIndices', dailyDoubleIndices) 
+
 const initialState = {
   boardData: [],
   availableCategories: [],
   displayBoard: false,
   categoryPage: 0,
+  dailyDouble: dailyDoubleIndices,
 };
 
 export const boardSlice = createSlice({
@@ -17,9 +21,6 @@ export const boardSlice = createSlice({
     addBoardData: (state, action) => {
       if (state.boardData.length < 6)
         state.boardData = [...state.boardData, action.payload];
-      // const i = state.availableCategories.findIndex(
-      //   (data) => data.id === action.payload.id
-      // );
     },
     removeBoardData: (state, action) => {
       const i = state.boardData.findIndex(
