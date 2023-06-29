@@ -10,6 +10,7 @@ const questionSlice = createSlice({
       category: null,
     },
     toggleModal: false,
+    showDailyDouble: false
   },
   reducers: {
     setCurrentQuestion: (state, action) => {
@@ -19,9 +20,12 @@ const questionSlice = createSlice({
     showQuestion: (state) => {
       state.toggleModal = !state.toggleModal;
     },
+    showDailyDouble: (state) => {
+      state.showDailyDouble = !state.showDailyDouble;
+    }
   },
 });
 
-export const { setCurrentQuestion, showQuestion } = questionSlice.actions;
+export const { setCurrentQuestion, showQuestion, showDailyDouble } = questionSlice.actions;
 
 export default questionSlice.reducer;

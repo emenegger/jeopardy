@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentQuestion,
   showQuestion,
+  showDailyDouble
 } from "../QuestionModal/questionSlice";
 
 const Tile = ({ clueData, category, pos }) => {
@@ -24,7 +25,7 @@ const Tile = ({ clueData, category, pos }) => {
         category,
       })
     );
-    dispatch(showQuestion());
+    isDailyDouble ? dispatch(showDailyDouble()) : dispatch(showQuestion());
     setAnswered(true);
   };
 

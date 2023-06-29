@@ -12,21 +12,15 @@ import HeroPage from "./components/HeroPage/HeroPage";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const dispatch = useDispatch();
-  const showQuestionSelector = (state) => state.question.toggleModal; // this would be in a separate file in a selectors folder and imported in
+  const showQuestionSelector = (state) => state.question.toggleModal; 
+  const showDailyDoubleSelector = (state) => state.question.showDailyDouble;// this would be in a separate file in a selectors folder and imported in
   const showQuestion = useSelector(showQuestionSelector);
-
-  // const { isLoading, error, data } = useQuery(
-  //   "fetchCategories",
-  //   fetchCategories
-  // );
-  // if (data) {
-  //   dispatch(setAllCategories(data));
-  // }
+  const showDailyDouble = useSelector(showDailyDoubleSelector);
 
   return (
     <div className="App">
       {showQuestion && <QuestionModal />}
+      {/* {showDailyDouble && <h1>DAILY DOUBLE!!!!</h1>} */}
       <Routes>
         <Route path="/" element={<HeroPage />} />
         <Route path="player-selection" element={<PlayersSelection />} />
