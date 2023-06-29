@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { showQuestion } from "./questionSlice";
+import { showQuestion, showDailyDouble } from "./questionSlice";
 // import { addPointsToPlayer } from "../Players/playersSlice";
 import AddPointsButton from "./AddPointsButton";
 
-const QuestionModal = () => {
+const QuestionModal = ({wager}) => {
   const question = useSelector((state) => state.question.currentQuestion);
   const players = useSelector((state) => state.players);
   const [showAnswer, setShowAnswer] = useState(false);
   // const [showAddedPoints, setShowAddedPoints] = useState(false)
   const dispatch = useDispatch();
+
+  const value = wager || question.value;
+  console.log(value)
+  console.log(typeof value)
+  const handleClose = () => wager ? dispatch(showDailyDouble()) : showQuestion()
 
   return (
     <>
@@ -22,7 +27,8 @@ const QuestionModal = () => {
           </div>
           <button
             className={styles.closeBtn}
-            onClick={() => dispatch(showQuestion())}
+            // onClick={() => dispatch(showQuestion())}
+            onClick={handleClose}
           >
             {" "}
             close
@@ -38,14 +44,14 @@ const QuestionModal = () => {
             )}
           </div>
           <div className={styles.modalActions}>
-            <h2>Add {question.value} points to:</h2>
+            <h2>Add {value} points to:</h2>
             <div className={styles.actionsContainer}>
               {players.map((player) => {
                 return (
                   <AddPointsButton
                     id={player.id}
                     name={player.name}
-                    value={question.value}
+                    value={value}
                     key={player.id}
                   />
                 );

@@ -6,7 +6,6 @@ import styles from './styles.module.scss'
 
 const BigBoard = () => {
   const boardData = useSelector(state => state.board.boardData);
-  console.log('boardData', boardData);
 
   return (
     <div className={styles.container}>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import QuestionModal from "../QuestionModal/QuestionModal";
 import styles from "./styles.module.scss";
+import Wager from "./Wager";
 
 const DailyDouble = () => {
   const question = useSelector((state) => state.question.currentQuestion);
@@ -9,23 +11,21 @@ const DailyDouble = () => {
   const [wager, setWager] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
   const dispatch = useDispatch();
-  console.log(wager, showQuestion);
+
+  const handleSubmitWager = () =>
+    setShowQuestion((prevShowQuestion) => !prevShowQuestion);
 
   return (
     <div className={styles.container}>
-      <div>
-        <h1>What would you like to wager?</h1>
-        <form>
-          <input
-            type="text"
-            value={wager}
-            onChange={(e) => setWager(e.target.value)}
-          ></input>
-        </form>
-        <button onClick={(e) => setShowAnswer((showQuestion) => !showQuestion)}>
-          submit
-        </button>
-      </div>
+      {showQuestion ? (
+        <QuestionModal wager={wager}/>
+      ) : (
+        <Wager
+          handleSubmitWager={handleSubmitWager}
+          setWager={setWager}
+          wager={wager}
+        />
+      )}
     </div>
   );
 };
