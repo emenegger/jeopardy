@@ -11,7 +11,12 @@ const Column = ({ columnData }) => {
       <div className={styles.header}>
         <h4> {columnData.title}</h4>
       </div>
-      <Tile
+      {columnData.map((col, i)=> <Tile
+        clueData={col[i]}
+        key={col[i]}
+        category={col.title}
+      /> )}
+      {/* <Tile
         clueData={clueWithValue(100)}
         key={clueWithValue(100)?.id}
         category={columnData.title}
@@ -35,7 +40,7 @@ const Column = ({ columnData }) => {
         clueData={clueWithValue(500)}
         key={clueWithValue(500)?.id}
         category={columnData.title}
-      />
+      /> */}
     </div>
   );
 };
