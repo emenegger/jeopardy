@@ -25,18 +25,27 @@ const Tile = ({ clueData, category }) => {
     dispatch(showQuestion());
     setAnswered(true);
   };
-  if (answered) {
-    return (
-      <div className={styles.inactive}>
-      </div>
-    );
-  } else {
-    return (
-      <div onClick={handleClick} className={styles.active}>
-        <h2>${clueData?.value}</h2>
-      </div>
-    );
-  }
+
+  return answered ? (
+    <div className={styles.inactive}>
+    </div>
+  ) : (
+    <div onClick={handleClick} className={styles.active}>
+      <h2>${clueData?.value}</h2>
+    </div>
+  )
+  // if (answered) {
+  //   return (
+  //     <div className={styles.inactive}>
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div onClick={handleClick} className={styles.active}>
+  //       <h2>${clueData?.value}</h2>
+  //     </div>
+  //   );
+  // }
 };
 
 export default Tile;
