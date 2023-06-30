@@ -3,9 +3,9 @@ import styles from "./styles.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { showQuestion, showDailyDouble } from "./questionSlice";
 // import { addPointsToPlayer } from "../Players/playersSlice";
-import AddPointsButton from "./AddPointsButton";
+import PointsButton from "./PointsButton";
 
-const QuestionModal = ({wager}) => {
+const QuestionModal = ({ wager }) => {
   const question = useSelector((state) => state.question.currentQuestion);
   const players = useSelector((state) => state.players);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -13,7 +13,8 @@ const QuestionModal = ({wager}) => {
   const dispatch = useDispatch();
 
   const value = wager || question.value;
-  const handleClose = () => wager ? dispatch(showDailyDouble()) : dispatch(showQuestion())
+  const handleClose = () =>
+    wager ? dispatch(showDailyDouble()) : dispatch(showQuestion());
 
   return (
     <>
@@ -42,16 +43,27 @@ const QuestionModal = ({wager}) => {
             )}
           </div>
           <div className={styles.modalActions}>
-            <h2>Add {value} points to:</h2>
+            <h2>Add or subtract {value} points to:</h2>
             <div className={styles.actionsContainer}>
               {players.map((player) => {
                 return (
-                  <AddPointsButton
-                    id={player.id}
-                    name={player.name}
-                    value={value}
-                    key={player.id}
-                  />
+                  <div className={styles.buttons}>
+                    <h3>{player.name}</h3>
+                    <PointsButton
+                      type={"increment"}
+                      id={player.id}
+                      name={player.name}
+                      value={value}
+                      key={player.id}
+                    />
+                    <PointsButton
+                      type={"decrement"}
+                      id={player.id}
+                      name={player.name}
+                      value={value}
+                      key={player.id}
+                    />
+                  </div>
                 );
               })}
             </div>
