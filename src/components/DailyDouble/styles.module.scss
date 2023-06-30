@@ -10,3 +10,77 @@
   backdrop-filter: blur(5px); /* Apply the backdrop blur effect */
   z-index: 9999; /* Adjust the z-index as needed */
 }
+
+.wagerContainer {
+  background-image: url(https://triviabliss.com/wp-content/uploads/2022/03/Jeopardy21_S30_Daily_Double_Logo.webp);
+  background-size: 100% auto;  
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: transparent;
+  // animation: flip 3s ease-in-out forwards;
+  animation-name: flip, removeImage;
+  animation-duration: 3s, 3s;
+  animation-timing-function: linear, linear;
+  animation-delay: 0s, 3s;
+  animation-fill-mode: forwards, forwards;
+  animation-iteration-count: 1, 1;
+}
+
+.wagerForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  animation: slowShow 10s ease-in;
+}
+
+@keyframes slowShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg) scale(0.25);
+  }
+  33% {
+    transform: rotateX(90deg) scale(0.5);
+  }
+  99% {
+    transform: rotateX(360deg) scale(1);
+  }
+  100% {
+    animation: removeImage 3s ease-in-out;
+  }
+}
+
+@keyframes removeImage {
+  0% {
+    background-image: url(https://triviabliss.com/wp-content/uploads/2022/03/Jeopardy21_S30_Daily_Double_Logo.webp);
+    background-color: none;
+    color: transparent;
+  }
+  100% {
+    opacity: 0.5;
+    background-image: url(https://triviabliss.com/wp-content/uploads/2022/03/Jeopardy21_S30_Daily_Double_Logo.webp);
+    background-color: rgb(44, 44, 208, 0.5);
+    color: rgb(245, 245, 245, 0.5);
+  }
+  100% {
+    opacity: 1;
+    background-image: none;
+    background-color: rgb(44, 44, 208, 1);
+    color:whitesmoke;
+  }
+}

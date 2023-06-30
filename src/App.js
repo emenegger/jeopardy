@@ -1,13 +1,12 @@
 import "./App.scss";
 import BigBoard from "./components/Board/BigBoard";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCategories } from "./components/Board/boardSlice";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
 // import SelectionWrapper from "./components/Selection/SelectionWrapper";
 import PlayersSelection from "./components/Players/PlayersInput";
 import Selection from './components/Selection/Selection';
-import { useQuery } from "react-query";
-import { fetchCategories } from "./api/categories";
+// import { useQuery } from "react-query";
+// import { fetchCategories } from "./api/categories";
 import HeroPage from "./components/HeroPage/HeroPage";
 import DailyDouble from "./components/DailyDouble/DailyDouble";
 import { Routes, Route } from "react-router-dom";

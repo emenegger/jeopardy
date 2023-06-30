@@ -6,6 +6,8 @@ import Wager from "./Wager";
 
 const DailyDouble = () => {
   const players = useSelector((state) => state.players);
+  const showDailyDoubleSelector = (state) => state.question.showDailyDouble;
+  const showDailyDouble = useSelector(showDailyDoubleSelector);
   const [wager, setWager] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
 
@@ -13,7 +15,7 @@ const DailyDouble = () => {
     setShowQuestion((prevShowQuestion) => !prevShowQuestion);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles['flip-animation']}`}>
       {showQuestion ? (
         <QuestionModal wager={wager}/>
       ) : (
