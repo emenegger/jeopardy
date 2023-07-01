@@ -8,14 +8,16 @@ import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";
 import { fetchCategories } from "../../api/categories";
 import { setAllCategories } from "../Board/boardSlice";
+import { useState } from "react";
 
 // this is doing too much - goes against the single responsiblity principle
 
 const Selection = () => {
   const boardData = useSelector((state) => state.board.boardData);
   const players = useSelector((state) => state.players);
-
+  const [showCategories, setShowCategories] = useState(false);
   const dispatch = useDispatch();
+
   const { isLoading, error, data } = useQuery(
     "fetchCategories",
     fetchCategories
@@ -24,8 +26,20 @@ const Selection = () => {
     dispatch(setAllCategories(data));
   }
 
+  const handleAutoCategories = () => {
+    for (let i; i < 6; i++) {
+      // generate random indices 
+      // grab data from available categories with indices
+      // use the id to add categories to boardData
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
+      <div className={styles.chooseMethod}> 
+      <button>Generate Random Categories</button>
+      <button>Select Your Categories</button>
+      </div>
       <div className={styles.selectionContainer}>
         {isLoading ? <h1>loading... </h1> : <CategoryList />}
         <Pagination />

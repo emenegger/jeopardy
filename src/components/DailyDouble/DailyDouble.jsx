@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import QuestionModal from "../QuestionModal/QuestionModal";
 import styles from "./styles.module.scss";
 import Wager from "./Wager";
 
 const DailyDouble = () => {
-  const players = useSelector((state) => state.players);
+  // const players = useSelector((state) => state.players); // limit wager based on player?
   const [wager, setWager] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
 
