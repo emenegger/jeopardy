@@ -4,11 +4,11 @@ import { addPlayer } from "./playersSlice";
 
 const PlayerForm = ({ playerNum }) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [buttonSubmit, setButtonSubmit] = useState(false)
+  const [name, setName] = useState("");
+  const [buttonSubmit, setButtonSubmit] = useState(false);
 
   const handleAddPlayer = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(
       addPlayer({
         name: name,
@@ -16,21 +16,20 @@ const PlayerForm = ({ playerNum }) => {
         id: playerNum,
       })
     );
-    setButtonSubmit(true)
+    setButtonSubmit(true);
   };
 
   const handleChange = (e) => setName(e.target.value);
-  
 
   return (
     <div>
       <label>Enter Player {playerNum}'s name: </label>
-      <input
-        type="text"
-        value={name}
-        onChange={handleChange}
-      ></input>{" "}
-      {buttonSubmit ? <button disabled>✅</button> : <button onClick={handleAddPlayer}>submit</button>}
+      <input type="text" value={name} onChange={handleChange}></input>{" "}
+      {buttonSubmit ? (
+        <button disabled>✅</button>
+      ) : (
+        <button onClick={handleAddPlayer}>submit</button>
+      )}
     </div>
   );
 };
