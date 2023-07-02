@@ -6,8 +6,8 @@ import { Link, redirect } from "react-router-dom";
 import Pagination from "./Pagination";
 import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";
-import { fetchCategories } from "../../api/categories";
-import { setAllCategories } from "../Board/boardSlice";
+import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
+import { setAllCategories, addBoardData } from "../Board/boardSlice";
 import { useState } from "react";
 
 // this is doing too much - goes against the single responsiblity principle
@@ -26,23 +26,37 @@ const Selection = () => {
     dispatch(setAllCategories(data));
   }
 
-  const handleAutoCategories = () => {
-    for (let i; i < 6; i++) {
-      // generate random indices 
+  const handleAutoCategories = async () => {
+    setShowCategories(false)
+    for (let i = 0; i < 6; i++) {
+      // generate random indices
+      const i = Math.floor(Math.random() * data.length);
       // grab data from available categories with indices
+      const randomCategory = data[i];
       // use the id to add categories to boardData
+      const response = await fetchCategoryDataById(randomCategory.id);
+      dispatch(addBoardData(response));
     }
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.chooseMethod}> 
-      <button>Generate Random Categories</button>
-      <button>Select Your Categories</button>
+      <div className={styles.chooseMethod}>
+        <button onClick={handleAutoCategories}>
+          Generate Random Categories
+        </button>
+        <button onClick={()=>setShowCategories(true)}>Select Your Categories</button>
       </div>
       <div className={styles.selectionContainer}>
-        {isLoading ? <h1>loading... </h1> : <CategoryList />}
-        <Pagination />
+        {isLoading ? (
+          <h1>loading... </h1>
+        ) : (
+          showCategories && (
+            <>
+              <CategoryList /> <Pagination />{" "}
+            </>
+          )
+        )}
         <SelectedCategories />
         <Link to="../board">
           <button

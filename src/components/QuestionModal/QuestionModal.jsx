@@ -45,7 +45,7 @@ const QuestionModal = ({ wager }) => {
           <div className={styles.modalActions}>
             <h2>Add or subtract {value} points to:</h2>
             <div className={styles.actionsContainer}>
-              {players.map((player) => {
+              {players.map((player, i) => {
                 return (
                   <div className={styles.buttons}>
                     <h3>{player.name}</h3>
@@ -61,7 +61,7 @@ const QuestionModal = ({ wager }) => {
                       id={player.id}
                       name={player.name}
                       value={value}
-                      key={player.id}
+                      key={`${player.id} + ${i}`}
                     />
                   </div>
                 );
