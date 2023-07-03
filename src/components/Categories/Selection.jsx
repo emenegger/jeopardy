@@ -8,7 +8,7 @@ import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";
 import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
 import { addBoardData } from "../Board/boardSlice";
-import { setAllCategories } from "./categoriesSlice";
+import { setAllCategories, removeAvailableCategory } from "./categoriesSlice";
 
 import { useState } from "react";
 
@@ -17,6 +17,10 @@ import { useState } from "react";
 const Selection = () => {
   const boardData = useSelector((state) => state.board.boardData);
   const players = useSelector((state) => state.players);
+  const availableCategories = useSelector(
+    (state) => state.categories.availableCategories
+  );
+
   const [showCategories, setShowCategories] = useState(false);
   const [hasSelected, setHasSelected] = useState(false);
   const dispatch = useDispatch();
@@ -26,7 +30,7 @@ const Selection = () => {
     fetchCategories
   );
 
-  if (data) {
+  if (data && availableCategories.length === 0) {
     dispatch(setAllCategories(data));
   }
 
@@ -38,6 +42,7 @@ const Selection = () => {
       const randomCategory = data[i];
       const response = await fetchCategoryDataById(randomCategory.id);
       dispatch(addBoardData(response));
+      dispatch(removeAvailableCategory(randomCategory))
     }
   };
 
@@ -51,6 +56,7 @@ const Selection = () => {
   ) : (
     <div className={styles.wrapper}>
       <div className={styles.chooseMethod}>
+        <h3>Number of Available Categories: {availableCategories.length}</h3>
         <button onClick={handleAutoCategories}>
           Generate Random Categories
         </button>

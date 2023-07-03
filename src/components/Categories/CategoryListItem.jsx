@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 import { selectBoardData } from "../../selectors/categories";
 import { fetchCategoryDataById } from "../../api/categories";
-
-const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
+import { removeAvailableCategory, addAvailableCategory } from "./categoriesSlice";
 
 const CategoryListItem = ({ category, type }) => {
   const dispatch = useDispatch();
@@ -15,10 +14,12 @@ const CategoryListItem = ({ category, type }) => {
   const addCategoryData = async (categoryData) => {
     const data = await fetchCategoryDataById(categoryData.id);
     dispatch(addBoardData(data));
+    dispatch(removeAvailableCategory(categoryData));
   };
 
   const removeCategoryData = (categoryData) => {
     dispatch(removeBoardData(categoryData));
+    dispatch(addAvailableCategory(categoryData))
   };
 
   return (

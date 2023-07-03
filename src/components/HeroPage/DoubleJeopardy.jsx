@@ -7,9 +7,7 @@ const DoubleJeopardy = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    // set the entire board data to [];
     dispatch(resetBoardData());
-    // dispatch()
     // set available categories to everything but the previous ones
   };
 

@@ -14,7 +14,7 @@ function App() {
   const showQuestion = useSelector(showQuestionSelector);
   const showDailyDouble = useSelector(showDailyDoubleSelector);
   const numAnswered = useSelector(showNumAnswered);
-  const doubleJeopardy = numAnswered >= 5;
+  const doubleJeopardy = numAnswered >= 2;
 
   return (
     <div className="App">

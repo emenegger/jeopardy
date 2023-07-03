@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTotalPagesOfCategories } from "../../selectors/categories";
 
 const Pagination = () => {
-  const pageNumber = useSelector((state) => state.board.categoryPage);
+  const pageNumber = useSelector((state) => state.categories.categoryPage);
   const totalPages = useSelector(getTotalPagesOfCategories);
   const dispatch = useDispatch();
 
