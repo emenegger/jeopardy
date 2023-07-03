@@ -1,11 +1,8 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const playersSlice = createSlice({
   name: "players",
   initialState: [],
-  // initialState: {
-  //   players: [],
-  // },
   reducers: {
     addPlayer: (state, action) => {
       // state = [...state, action.payload];
@@ -13,9 +10,7 @@ const playersSlice = createSlice({
       // state.players = [...state.players, action.payload];
     },
     addPointsToPlayer: (state, action) => {
-      const i = state.findIndex(
-        (player) => player.id === action.payload.id
-      );
+      const i = state.findIndex((player) => player.id === action.payload.id);
       state = [
         ...state.slice(0, i),
         Object.assign({}, state[i], {
@@ -25,9 +20,7 @@ const playersSlice = createSlice({
       ];
     },
     removePointsFromPlayer: (state, action) => {
-      const i = state.findIndex(
-        (player) => player.id === action.payload.id
-      );
+      const i = state.findIndex((player) => player.id === action.payload.id);
       state = [
         ...state.slice(0, i),
         Object.assign({}, state[i], {
@@ -35,10 +28,11 @@ const playersSlice = createSlice({
         }),
         ...state.slice(i + 1),
       ];
-    }
+    },
   },
 });
 
-export const { addPlayer, addPointsToPlayer,removePointsFromPlayer } = playersSlice.actions;
+export const { addPlayer, addPointsToPlayer, removePointsFromPlayer } =
+  playersSlice.actions;
 
 export default playersSlice.reducer;
