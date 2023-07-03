@@ -1,14 +1,14 @@
-main {
-  display: flex;
-  justify-content: space-evenly;
-}
+// main {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // height: 100vh;
+  height: 100vh;
 }
 
 .selectListItem {
@@ -18,8 +18,6 @@ main {
 }
 
 .selectionContainer {
-  // border: solid black;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

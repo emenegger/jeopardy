@@ -16,28 +16,33 @@ const Selection = () => {
   const boardData = useSelector((state) => state.board.boardData);
   const players = useSelector((state) => state.players);
   const [showCategories, setShowCategories] = useState(false);
+  const [hasSelected, setHasSelected] = useState(false);
   const dispatch = useDispatch();
 
   const { isLoading, error, data } = useQuery(
     "fetchCategories",
     fetchCategories
   );
+
   if (data) {
     dispatch(setAllCategories(data));
   }
 
   const handleAutoCategories = async () => {
-    setShowCategories(false)
+    setShowCategories(false);
+    setHasSelected(true);
     for (let i = 0; i < 6; i++) {
-      // generate random indices
       const i = Math.floor(Math.random() * data.length);
-      // grab data from available categories with indices
       const randomCategory = data[i];
-      // use the id to add categories to boardData
       const response = await fetchCategoryDataById(randomCategory.id);
       dispatch(addBoardData(response));
     }
   };
+
+  const handleChooseCategories = () => {
+    setHasSelected(true);
+    setShowCategories(true)
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -45,7 +50,9 @@ const Selection = () => {
         <button onClick={handleAutoCategories}>
           Generate Random Categories
         </button>
-        <button onClick={()=>setShowCategories(true)}>Select Your Categories</button>
+        <button onClick={handleChooseCategories}>
+          Select Your Categories
+        </button>
       </div>
       <div className={styles.selectionContainer}>
         {isLoading ? (
@@ -57,7 +64,7 @@ const Selection = () => {
             </>
           )
         )}
-        <SelectedCategories />
+        {hasSelected && <SelectedCategories />}
         <Link to="../board">
           <button
             disabled={
