@@ -14,13 +14,11 @@ function App() {
   const showQuestion = useSelector(showQuestionSelector);
   const showDailyDouble = useSelector(showDailyDoubleSelector);
   const numAnswered = useSelector(showNumAnswered);
-  const doubleJeopardy =  numAnswered >= 5;
-  // console.log(numAnswered)
-  // create a modal which pops up when all questions from round one are answered (30)
+  const doubleJeopardy = numAnswered >= 5;
 
   return (
     <div className="App">
-      {doubleJeopardy && <DoubleJeopardy />}
+      {doubleJeopardy && !showQuestion && <DoubleJeopardy />}
       {showQuestion && <QuestionModal />}
       {showDailyDouble && <DailyDouble />}
       <Routes>
