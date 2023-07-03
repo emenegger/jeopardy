@@ -1,7 +1,5 @@
-import {
-  incrementCategoryPage,
-  decrementCategoryPage,
-} from "../Board/boardSlice";
+
+import { incrementCategoryPage, decrementCategoryPage } from "./categoriesSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { getTotalPagesOfCategories } from "../../selectors/categories";
 

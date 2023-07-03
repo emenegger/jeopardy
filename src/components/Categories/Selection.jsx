@@ -7,7 +7,9 @@ import Pagination from "./Pagination";
 import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";
 import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
-import { setAllCategories, addBoardData } from "../Board/boardSlice";
+import { addBoardData } from "../Board/boardSlice";
+import { setAllCategories } from "./categoriesSlice";
+
 import { useState } from "react";
 
 // this is doing too much - goes against the single responsiblity principle

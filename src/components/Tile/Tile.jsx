@@ -17,6 +17,7 @@ const Tile = ({ clueData, category, pos }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    // should this be one action?
     dispatch(
       setCurrentQuestion({
         question: clueData?.question,

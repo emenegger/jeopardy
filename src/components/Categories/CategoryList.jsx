@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const CategoryList = () => {
   const paginatedCategories = useSelector(getPaginatedCategories);
-
+  
   return (
     <div>
       <h2>Select Six Categories</h2>
