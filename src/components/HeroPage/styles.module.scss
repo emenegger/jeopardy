@@ -9,3 +9,25 @@
 .hero {
   height: .15rem;  
 }
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* Apply the backdrop blur effect */
+  z-index: 9999; /* Adjust the z-index as needed */
+}
+
+.ddContainer {
+  width: 60vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}

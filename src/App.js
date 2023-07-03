@@ -7,14 +7,20 @@ import Selection from "./components/Categories/Selection";
 import HeroPage from "./components/HeroPage/HeroPage";
 import DailyDouble from "./components/DailyDouble/DailyDouble";
 import { Routes, Route } from "react-router-dom";
-import { showQuestionSelector, showDailyDoubleSelector } from "./selectors/questions";
+import { showQuestionSelector, showDailyDoubleSelector, showNumAnswered } from "./selectors/questions";
+import DoubleJeopardy from "./components/HeroPage/DoubleJeopardy";
 
 function App() {
   const showQuestion = useSelector(showQuestionSelector);
   const showDailyDouble = useSelector(showDailyDoubleSelector);
+  const numAnswered = useSelector(showNumAnswered);
+  const doubleJeopardy =  numAnswered >= 5;
+  // console.log(numAnswered)
+  // create a modal which pops up when all questions from round one are answered (30)
 
   return (
     <div className="App">
+      {doubleJeopardy && <DoubleJeopardy />}
       {showQuestion && <QuestionModal />}
       {showDailyDouble && <DailyDouble />}
       <Routes>
