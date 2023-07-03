@@ -41,28 +41,24 @@ const Selection = () => {
 
   const handleChooseCategories = () => {
     setHasSelected(true);
-    setShowCategories(true)
-  }
+    setShowCategories(true);
+  };
 
-  return (
+  return isLoading ? (
+    <h1>loading... </h1> // replace this with a loading component
+  ) : (
     <div className={styles.wrapper}>
       <div className={styles.chooseMethod}>
         <button onClick={handleAutoCategories}>
           Generate Random Categories
         </button>
-        <button onClick={handleChooseCategories}>
-          Select Your Categories
-        </button>
+        <button onClick={handleChooseCategories}>Select Your Categories</button>
       </div>
       <div className={styles.selectionContainer}>
-        {isLoading ? (
-          <h1>loading... </h1>
-        ) : (
-          showCategories && (
-            <>
-              <CategoryList /> <Pagination />{" "}
-            </>
-          )
+        {showCategories && (
+          <>
+            <CategoryList /> <Pagination />{" "}
+          </>
         )}
         {hasSelected && <SelectedCategories />}
         <Link to="../board">

@@ -26,7 +26,6 @@ const QuestionModal = ({ wager }) => {
           </div>
           <button
             className={styles.closeBtn}
-            // onClick={() => dispatch(showQuestion())}
             onClick={handleClose}
           >
             {" "}
@@ -46,22 +45,23 @@ const QuestionModal = ({ wager }) => {
             <h2>Add or subtract {value} points to:</h2>
             <div className={styles.actionsContainer}>
               {players.map((player, i) => {
+                const { id, name } = player;
                 return (
                   <div className={styles.buttons}>
                     <h3>{player.name}</h3>
                     <PointsButton
                       type={"increment"}
-                      id={player.id}
-                      name={player.name}
+                      id={id}
+                      name={name}
                       value={value}
-                      key={player.id}
+                      key={id}
                     />
                     <PointsButton
                       type={"decrement"}
-                      id={player.id}
-                      name={player.name}
+                      id={id}
+                      name={name}
                       value={value}
-                      key={`${player.id} + ${i}`}
+                      key={name + id}
                     />
                   </div>
                 );

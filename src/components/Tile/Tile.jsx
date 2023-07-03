@@ -6,6 +6,7 @@ import {
   showQuestion,
   showDailyDouble
 } from "../QuestionModal/questionSlice";
+import { incrementCountAnswered } from "../Board/boardSlice";
 
 const Tile = ({ clueData, category, pos }) => {
   // const {question, value, answer, category} = clueData; //* this doesn't destructure during some fetch calls, why?
@@ -13,7 +14,6 @@ const Tile = ({ clueData, category, pos }) => {
   const dailyDouble = useSelector(state =>  state.board.dailyDouble);
   const isDailyDouble = JSON.stringify(dailyDouble) === JSON.stringify(pos);
   const [answered, setAnswered] = useState(false);
-
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -26,6 +26,7 @@ const Tile = ({ clueData, category, pos }) => {
       })
     );
     isDailyDouble ? dispatch(showDailyDouble()) : dispatch(showQuestion());
+    dispatch(incrementCountAnswered())
     setAnswered(true);
   };
 

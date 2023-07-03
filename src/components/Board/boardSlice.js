@@ -1,14 +1,18 @@
 import { createSlice, current } from "@reduxjs/toolkit"; // add current here to see current state
 
-const dailyDoubleIndices = [Math.ceil(Math.random(0,1) * 5), Math.ceil(Math.random(0,1) * 4)];
-console.log('dailyDoubleIndices', dailyDoubleIndices) 
+const dailyDoubleIndices = [
+  Math.ceil(Math.random(0, 1) * 5),
+  Math.ceil(Math.random(0, 1) * 4),
+];
+console.log("dailyDoubleIndices", dailyDoubleIndices);
 
 const initialState = {
   boardData: [],
-  availableCategories: [],
+  numAnswered: 0,
   displayBoard: false,
-  categoryPage: 0,
   dailyDouble: dailyDoubleIndices,
+  availableCategories: [],
+  categoryPage: 0,
 };
 
 export const boardSlice = createSlice({
@@ -30,12 +34,16 @@ export const boardSlice = createSlice({
         ...state.boardData.slice(0, i),
         ...state.boardData.slice(i + 1),
       ];
+      // this should be refactored? Why is this hard coded?
       const j = 1;
       state.availableCategories = [
         ...state.availableCategories.slice(0, j),
         action.payload,
         ...state.availableCategories.slice(j + 1),
       ];
+    },
+    incrementCountAnswered: (state) => {
+      state.numAnswered = ++state.numAnswered;
     },
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
@@ -56,6 +64,7 @@ export const {
   removeBoardData,
   incrementCategoryPage,
   decrementCategoryPage,
+  incrementCountAnswered
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
