@@ -9,10 +9,12 @@ export const fetchCategories = async () => {
 
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 
-export const fetchCategoryDataById = async (categoryId) => {
+export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   const response = await fetch(`${CATEGORIES_QUERY}${categoryId}`);
   const data = await response.json();
+  console.log('data', data)
   const firstRoundVals = [100, 200, 300, 400, 500];
+  const secondRoundVals = [600, 700, 800, 900, 1000];
   // for each of the round vals, find one and add
   const getFilteredClues = (data, requiredVals) => {
     const returnArr = [];
@@ -22,7 +24,8 @@ export const fetchCategoryDataById = async (categoryId) => {
     } 
     return returnArr;
   };
-  const filteredVals = getFilteredClues(data, firstRoundVals);
+  const vals = isDoubleJeopardy ? secondRoundVals : firstRoundVals;
+  const filteredVals = getFilteredClues(data, vals);
   data.clues = filteredVals;
   return data;
 };

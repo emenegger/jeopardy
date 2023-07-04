@@ -38,7 +38,7 @@ export const boardSlice = createSlice({
     },
     resetBoardData: (state) => {
       state.boardData = [];
-      state.numAnswered = 0;
+      // state.numAnswered = 0;
     }
   },
 });

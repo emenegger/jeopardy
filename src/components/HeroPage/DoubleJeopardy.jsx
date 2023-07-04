@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { resetBoardData } from "../Board/boardSlice";
 import styles from "./styles.module.scss";
 
-const DoubleJeopardy = () => {
+const DoubleJeopardy = ({setDdToggle}) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(resetBoardData());
-    // set available categories to everything but the previous ones
+    setDdToggle(false)
   };
 
   return (

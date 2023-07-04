@@ -5,14 +5,16 @@ import styles from "./styles.module.scss";
 import { selectBoardData } from "../../selectors/categories";
 import { fetchCategoryDataById } from "../../api/categories";
 import { removeAvailableCategory, addAvailableCategory } from "./categoriesSlice";
+import { getIsDoubleJeopardy } from "../../selectors/categories";
 
 const CategoryListItem = ({ category, type }) => {
   const dispatch = useDispatch();
   const addedCategories = useSelector(selectBoardData);
+  const isDailyDouble = useSelector(getIsDoubleJeopardy);
   const isSelected = addedCategories.some((c) => c.id === category.id);
 
   const addCategoryData = async (categoryData) => {
-    const data = await fetchCategoryDataById(categoryData.id);
+    const data = await fetchCategoryDataById(categoryData.id, isDailyDouble);
     dispatch(addBoardData(data));
     dispatch(removeAvailableCategory(categoryData));
   };

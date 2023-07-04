@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
 import { addBoardData } from "../Board/boardSlice";
 import { setAllCategories, removeAvailableCategory } from "./categoriesSlice";
+import { getIsDoubleJeopardy } from "../../selectors/categories";
 
 import { useState } from "react";
 
@@ -20,6 +21,7 @@ const Selection = () => {
   const availableCategories = useSelector(
     (state) => state.categories.availableCategories
   );
+  const isDailyDouble = useSelector(getIsDoubleJeopardy);
 
   const [showCategories, setShowCategories] = useState(false);
   const [hasSelected, setHasSelected] = useState(false);
@@ -40,9 +42,9 @@ const Selection = () => {
     for (let i = 0; i < 6; i++) {
       const i = Math.floor(Math.random() * data.length);
       const randomCategory = data[i];
-      const response = await fetchCategoryDataById(randomCategory.id);
+      const response = await fetchCategoryDataById(randomCategory.id, isDailyDouble);
       dispatch(addBoardData(response));
-      dispatch(removeAvailableCategory(randomCategory))
+      dispatch(removeAvailableCategory(randomCategory));
     }
   };
 
