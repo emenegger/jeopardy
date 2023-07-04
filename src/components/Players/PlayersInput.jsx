@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import PlayerForm from "./PlayerForm";
 import styles from "./styles.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
+import { toggleReady } from "./playersSlice";
 
 const PlayersSelection = () => {
   const [numPlayers, setNumPlayers] = useState([]);
+  const dispatch = useDispatch()
   const players = useSelector((state) => state.players);
   const disabledButton =
     players.length > 0 && players.length === numPlayers.length;
 
   return (
     <div className={styles.wrapper}>
+    <NavBar />
       <div className={styles.playerContainer}>
         <h2>
           Choose Number of Players: <b>{numPlayers.length}</b>
@@ -36,7 +40,7 @@ const PlayersSelection = () => {
                 return <PlayerForm key={i} playerNum={i + 1} />;
               })}
             <Link to={"../category-selection"}>
-              <button disabled={!disabledButton}>Choose Categories</button>
+              <button disabled={!disabledButton} onClick={()=> dispatch(toggleReady)}>Choose Categories</button>
             </Link>
           </form>
         </div>

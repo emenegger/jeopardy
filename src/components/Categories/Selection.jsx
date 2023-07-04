@@ -11,6 +11,7 @@ import { addBoardData } from "../Board/boardSlice";
 import { setAllCategories } from "./categoriesSlice";
 
 import { useState } from "react";
+import NavBar from "../NavBar/NavBar";
 
 // this is doing too much - goes against the single responsiblity principle
 
@@ -46,33 +47,38 @@ const Selection = () => {
     setShowCategories(true);
   };
 
-  return isLoading ? (
-    <h1>loading... </h1> // replace this with a loading component
-  ) : (
+  return (
     <div className={styles.wrapper}>
-      <div className={styles.chooseMethod}>
-        <button onClick={handleAutoCategories}>
-          Generate Random Categories
-        </button>
-        <button onClick={handleChooseCategories}>Select Your Categories</button>
-      </div>
-      <div className={styles.selectionContainer}>
-        {showCategories && (
-          <>
-            <CategoryList /> <Pagination />{" "}
-          </>
-        )}
-        {hasSelected && <SelectedCategories />}
-        <Link to="../board">
-          <button
-            disabled={
-              boardData.length === 6 && players.length > 0 ? false : true
-            } //* refactor this
-          >
-            Ready to Start?
+      <NavBar />
+      { isLoading ? (<h1>loading... </h1>) : (
+      <div className={styles.container}>
+        <div className={styles.chooseMethod}>
+          <button onClick={handleAutoCategories}>
+            Generate Random Categories
           </button>
-        </Link>
+          <button onClick={handleChooseCategories}>
+            Select Your Categories
+          </button>
+        </div>
+        <div className={styles.selectionContainer}>
+          {showCategories && (
+            <>
+              <CategoryList /> <Pagination />{" "}
+            </>
+          )}
+          {hasSelected && <SelectedCategories />}
+          <Link to="../board">
+            <button
+              disabled={
+                boardData.length === 6 && players.length > 0 ? false : true
+              } //* refactor this
+            >
+              Ready to Start?
+            </button>
+          </Link>
+        </div>
       </div>
+      )}
     </div>
   );
 };

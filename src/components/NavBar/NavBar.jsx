@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 const NavBar = () => {
   return (
     <div className={styles.wrapper}>
+      <header>JEOPARDY!</header>
       <nav>
         <ol>
           <Link to="/player-selection">1. Choose Players</Link>
@@ -11,7 +12,10 @@ const NavBar = () => {
         <ol>
           <Link to="/category-selection ">2. Choose Categories</Link>
         </ol>
-      </nav>
+        <ol>
+          <Link to="/board ">3. Start Game</Link>
+        </ol>
+      </nav>  
     </div>
   );
 };

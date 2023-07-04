@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit"; // add current here to see current state
+import { createSlice } from "@reduxjs/toolkit"; // add current here to see current state
 
 const dailyDoubleIndices = [
   Math.ceil(Math.random(0, 1) * 5),
@@ -36,6 +36,9 @@ export const boardSlice = createSlice({
     toggleBoardDisplay: (state) => {
       state.displayBoard = !state.displayBoard;
     },
+    resetBoardData: (state) => {
+      state.boardData = [];
+    }
   },
 });
 
@@ -43,7 +46,8 @@ export const {
   toggleBoardDisplay,
   addBoardData,
   removeBoardData,
-  incrementCountAnswered
+  incrementCountAnswered,
+  resetBoardData,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

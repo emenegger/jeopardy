@@ -1,5 +1,5 @@
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,4 +17,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,10 +1,54 @@
+@font-face {
+  font-family: 'Jeopardy';
+  // src: url('../fonts/my-custom-font.ttf') format('truetype');
+  src: url('../../fonts/gyparody\ hv.ttf') format('truetype');
+
+}
+
 .wrapper {
   width: 100vw;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: flex-start;
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+header {
+  font-family: Jeopardy;
+  font-size: 3rem;
+  color:rgba(13, 62, 136, 0.9);
+  // margin-right: auto;
+  padding: 0 0.5em 0 0.5em;
+  justify-self: start;
 }
 
 nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  // margin: 0 auto;
+  justify-self: center;
+  transform: translateX(-14%);
+  // border: solid black
 }
+
+ol {
+  padding: 0 5vw 0 5vw;
+}
+
+
+// .container {
+//   display: flex;
+//   justify-content: flex-start;
+// }
+
+// .container .element1 {
+//   margin-right: auto;
+// }
+
+// .container .element2 {
+//   margin: 0 auto;
+// }
