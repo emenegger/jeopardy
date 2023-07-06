@@ -9,12 +9,14 @@ export const fetchCategories = async () => {
 
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 
+// this needs serious refactoring!
+
 export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   const response = await fetch(`${CATEGORIES_QUERY}${categoryId}`);
   const data = await response.json();
-  console.log("data", data);
+  // console.log("data", data);
   const initClues = data.clues; 
-  console.log("initClues", initClues);
+  // console.log("initClues", initClues);
   const modifiedValsForFirstRound = initClues.map((clue) => ({
     ...clue,
     value: clue.value * 2,
@@ -24,7 +26,7 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
     ...clue,
     value: clue.value * 4,
   }))
-  console.log("modifiedValsForSecondRound", modifiedValsForSecondRound);
+  // console.log("modifiedValsForSecondRound", modifiedValsForSecondRound);
   const firstRoundVals = [200, 400, 600, 800, 1000];
   const secondRoundVals = [400, 800, 1200, 1600, 2000];
   // for each of the round vals, find one and add
@@ -40,6 +42,6 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   const finalClues = isDoubleJeopardy ? modifiedValsForSecondRound : modifiedValsForFirstRound;
   const filteredVals = getFilteredClues(finalClues, vals);
   data.clues = filteredVals;
-  console.log(data.clues);
+  // console.log(data.clues);
   return data;
 };
