@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "./styles.module.scss";
+import styles from "./Players.module.scss";
 
 const PlayersDisplay = () => {
   const players = useSelector((state) => state.players);

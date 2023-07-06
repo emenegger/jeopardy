@@ -23,7 +23,6 @@ const QuestionModal = ({ wager }) => {
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
             <h5 className={styles.heading}>{question.category}</h5>
-            {/* <h5 className={styles.heading}>{question}</h5> */}
           <button className={styles.closeBtn} onClick={handleClose}>
             <CloseIcon />
           </button>

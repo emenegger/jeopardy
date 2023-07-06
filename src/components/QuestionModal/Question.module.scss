@@ -167,6 +167,11 @@
   animation-fill-mode: forwards;
 }
 
+.ptsBtn:hover {
+  background-color:  rgb(22, 61, 127);
+  transform: scale(1.05)
+}
+
 @keyframes button-click {
   0% {
     transform: scale(1);
@@ -188,13 +193,13 @@
   top: 50px;
 }
 
-.valuePopSub {
+.negValuePop {
   color: red;
   // background-color: transparent;
   border-radius: 4px;
   position: relative;
-  left: 0px;
-  bottom: 80px;
+  left: 90px;
+  top: 50px;
 }
 
 .buttons {

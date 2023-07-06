@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PlayerForm from "./PlayerForm";
-import styles from "./styles.module.scss";
+import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";

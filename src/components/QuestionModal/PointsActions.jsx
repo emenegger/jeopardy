@@ -6,19 +6,21 @@ import { useState } from "react";
 
 const PointsActions = ({ value }) => {
   const players = useSelector((state) => state.players);
-  const [showDiv, setShowDiv] = useState(false);
+  const [showPosValue, setShowPosValue] = useState(false);
+  const [showNegValue, setShowNegValue] = useState(false);
 
   return (
     <div className={styles.modalActions}>
       <Divider /> 
       <div className={styles.actionsContainer}>
-        {players.map((player, i) => {
+        {players.map((player) => {
           const { id, name } = player;
           return (
             <div>
-              {showDiv && <div className={styles.valuePop}>+{value}</div>}
+              {showPosValue && <div className={styles.valuePop}>+{value}</div>}
+              {showNegValue && <div className={styles.negValuePop}>-{value}</div>}
               <p>{player.name}</p>
-              <div className={styles.buttons}>
+              <div className={styles.buttons} key={id}>
                 <div className={styles.ptsBtn}>
                   <PointsButton
                     type={"increment"}
@@ -26,7 +28,7 @@ const PointsActions = ({ value }) => {
                     name={name}
                     value={value}
                     key={id}
-                    setShowDiv={setShowDiv}
+                    setShowDiv={setShowPosValue}
                   />
                 </div>
                 <div className={styles.ptsBtn}>
@@ -36,7 +38,7 @@ const PointsActions = ({ value }) => {
                     name={name}
                     value={value}
                     key={name + id}
-                    // setShowDiv={setShowDiv}
+                    setShowDiv={setShowNegValue}
                   />
                 </div>
               </div>

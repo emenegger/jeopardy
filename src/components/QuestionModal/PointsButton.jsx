@@ -15,6 +15,7 @@ const PointsButton = ({ type, id, name, value, setShowDiv }) => {
   const dispatch = useDispatch();
 
   const handleClick = (id, points, type) => {
+    console.log('clicking', type)
     type === "increment"
       ? dispatch(addPointsToPlayer({ id, points }))
       : dispatch(removePointsFromPlayer({ id, points }));
@@ -27,9 +28,7 @@ const PointsButton = ({ type, id, name, value, setShowDiv }) => {
 
   return type === "increment" ? (
     showAddedPoints ? (
-      <>
-        <CheckOutlinedIcon className={styles.checkmark} />
-      </>
+      <CheckOutlinedIcon className={styles.checkmark} />
     ) : (
       <AddIcon key={id} onClick={() => handleClick(id, value, type)} />
     )

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Gloria+Hallelujah&display=swap');
+@import '../../constants.scss';
 
 form {
   display: flex;
@@ -29,7 +30,7 @@ table {
 .points {
   font-size: 2rem;
   color: whitesmoke;
-  background: radial-gradient(circle, rgb(22, 91, 209), rgb(8, 48, 118));
+  background: $blue-gradient;
   height: 6vh;
 }
 
@@ -38,5 +39,5 @@ table {
   color: whitesmoke;
   height: 6vh;
   font-size: 1.5rem;
-  background: radial-gradient(circle, rgb(22, 91, 209), rgb(8, 48, 118));
+  background: $blue-gradient;
 }
