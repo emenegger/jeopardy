@@ -60,7 +60,7 @@
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  font-family: $libre;
+  font-family: $oswald;
 }
 
 .modalContent {
@@ -68,46 +68,27 @@
   font-size: 2.5rem;
   color: #f7f8f9;
   text-align: center;
-  padding: 25px;
+  padding: 3.5rem;
 }
 
-.modalActions {
-  border-top:rgb(115, 150, 211);
-  position: absolute;
-  bottom: 2px;
-  margin-bottom: 10px;
-  width: 100%;
-  // color: whitesmoke;
-  color: #859eb8;
-  font-family: $libre;
-  text-transform: uppercase;
-  // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.actionsContainer {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  color: black
-}
 
 .closeBtn {
   cursor: pointer;
   font-weight: 500;
   padding: 4px 8px;
-  border-radius: 8px;
+  // border-radius: 8px;
   border: none;
   font-size: 18px;
   color: #2c3e50;
-  background: white;
+  background: $secondary-blue; 
+  color: white;
   transition: all 0.25s ease;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+  // box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
   position: absolute;
   right: 0;
   top: 0;
   align-self: flex-end;
-  margin-top: -7px;
-  margin-right: -7px;
+  margin: 4px;
 }
 
 .closeBtn:hover {
@@ -127,4 +108,85 @@
   font-family: $libre;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.checkmark {
+  color: green;
+  animation: checkmark-appear 0.75s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.SubCheckmark {
+  color: red;
+  animation: checkmark-appear 0.75s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+
+@keyframes checkmark-appear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {  
+    transform: scale(1);
+  }
+}
+
+.modalActions {
+  border-top:rgb(115, 150, 211);
+  position: absolute;
+  bottom: 2px;
+  // margin-bottom: 10px;
+  width: 100%;
+  color: #859eb8;
+  font-family: $inter;
+  font-weight: 900;
+}
+
+.actionsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: $inter;
+  font-weight: 400;   
+  p {
+    color: #e6e7fd;
+  }
+}
+
+.addBtn {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color:  rgb(8, 48, 118);
+  border-radius: 4px;
+  width: 6rem;
+  margin: 1px;
+}
+
+.subBtn {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color:  rgb(8, 48, 118);
+  border-radius: 4px;
+  width: 6rem;
+  margin: 1px;
+}
+
+.valuePop {
+  color: green;
+  // background-color: transparent;
+  border-radius: 4px;
+  position: relative;
+  right: 90px;
+  top: 50px;
+}
+
+.valuePopSub {
+  color: red;
+  // background-color: transparent;
+  border-radius: 4px;
+  position: relative;
+  left: 0px;
+  bottom: 80px;
+}
+
+.buttons {
+  display: flex;
 }

@@ -5,24 +5,38 @@ import {
   addPointsToPlayer,
   removePointsFromPlayer,
 } from "../Players/playersSlice";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import styles from "./Question.module.scss";
 
-const PointsButton = ({ type, id, name, value }) => {
+const PointsButton = ({ type, id, name, value, setShowDiv }) => {
   const [showAddedPoints, setShowAddedPoints] = useState(false);
   const dispatch = useDispatch();
 
   const handleClick = (id, points, type) => {
-    type === 'increment' ? dispatch(addPointsToPlayer({id,points})) : dispatch(removePointsFromPlayer({id, points}))
+    type === "increment"
+      ? dispatch(addPointsToPlayer({ id, points }))
+      : dispatch(removePointsFromPlayer({ id, points }));
     setShowAddedPoints(true);
+    setShowDiv(true);
+    setTimeout(() => {
+      setShowDiv(false);
+    }, 2000);
   };
 
   return type === "increment" ? (
-    <button key={id} onClick={() => handleClick(id, value, type)}>
-      {showAddedPoints ? `${value} added to ${name} ⬆️` : `➕`}
-    </button>
+    showAddedPoints ? (
+      <>
+        <CheckOutlinedIcon className={styles.checkmark} />
+      </>
+    ) : (
+      <AddIcon key={id} onClick={() => handleClick(id, value, type)} />
+    )
+  ) : showAddedPoints ? (
+    <CheckOutlinedIcon className={styles.SubCheckmark} />
   ) : (
-    <button key={id} onClick={() => handleClick(id, value, type)}>
-      {showAddedPoints ? `${value} removed from ${name} ⬇️` : `➖`}
-    </button>
+    <RemoveIcon key={id} onClick={() => handleClick(id, value, type)} />
   );
 };
 
