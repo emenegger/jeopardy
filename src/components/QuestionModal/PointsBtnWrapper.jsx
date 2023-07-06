@@ -10,36 +10,41 @@ import { useDispatch } from "react-redux";
 const PointsBtnWrapper = ({ value, id, name }) => {
   const [showPosValue, setShowPosValue] = useState(false);
   const [showNegValue, setShowNegValue] = useState(false);
-  const [showAddedPoints, setShowAddedPoints] = useState({increment: false, decrement: false});
+  const [showAddedPoints, setShowAddedPoints] = useState({
+    increment: false,
+    decrement: false,
+  });
   const dispatch = useDispatch();
 
   const handleClick = (id, points, type) => {
-    if (type === 'increment') {
-      dispatch(addPointsToPlayer({ id, points }))
+    if (type === "increment") {
+      dispatch(addPointsToPlayer({ id, points }));
       setShowPosValue(true);
-      setShowAddedPoints({...showAddedPoints, increment: true});
+      setShowAddedPoints({ ...showAddedPoints, increment: true });
       setTimeout(() => {
         setShowPosValue(false);
       }, 2000);
     } else {
       dispatch(removePointsFromPlayer({ id, points }));
       setShowNegValue(true);
-      setShowAddedPoints({...showAddedPoints, decrement: true});
+      setShowAddedPoints({ ...showAddedPoints, decrement: true });
       setTimeout(() => {
         setShowNegValue(false);
       }, 2000);
     }
-  }
+  };
 
   return (
     <div>
-      {showPosValue && <div className={styles.valuePop}>+{value}</div>}
-      {showNegValue && <div className={styles.negValuePop}>-{value}</div>}
+      <div className={styles.valuePop}>{showPosValue && `+${value}`}</div>
+      <div className={styles.negValuePop}>{showNegValue && `-${value}`}</div>
       <p>{name}</p>
       <div className={styles.buttons} key={id}>
         <div
           className={styles.ptsBtn}
-          onClick={() => handleClick(id, value, "increment")}
+          onClick={() =>
+            !showAddedPoints.increment && handleClick(id, value, "increment")
+          }
         >
           <PointsButton
             type={"increment"}
@@ -50,7 +55,7 @@ const PointsBtnWrapper = ({ value, id, name }) => {
         </div>
         <div
           className={styles.ptsBtn}
-          onClick={() => handleClick(id, value, "decrement")}
+          onClick={() => !showAddedPoints.decrement && handleClick(id, value, "decrement")}
         >
           <PointsButton
             type={"decrement"}

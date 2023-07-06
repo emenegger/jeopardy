@@ -60,7 +60,7 @@
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  font-family: $oswald;
+  font-family: $inter;
 }
 
 .modalContent {
@@ -192,6 +192,7 @@
   right: 90px;
   top: 50px;
   z-index: 2;
+  height: 10px
 }
 
 .negValuePop {
@@ -200,7 +201,9 @@
   border-radius: 4px;
   position: relative;
   left: 90px;
-  top: 50px;
+  top: 40px;
+  height: 10px;
+  z-index: 1;
 }
 
 .buttons {
