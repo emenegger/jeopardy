@@ -153,20 +153,30 @@
   }
 }
 
-.addBtn {
+.ptsBtn {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color:  rgb(8, 48, 118);
   border-radius: 4px;
   width: 6rem;
   margin: 1px;
+  animation-duration: 0.3s;
 }
 
-.subBtn {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color:  rgb(8, 48, 118);
-  border-radius: 4px;
-  width: 6rem;
-  margin: 1px;
+.ptsBtn:active {
+  animation-name: button-click;
+  animation-fill-mode: forwards;
+}
+
+@keyframes button-click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .valuePop {

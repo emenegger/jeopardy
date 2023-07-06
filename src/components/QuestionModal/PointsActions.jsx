@@ -10,7 +10,7 @@ const PointsActions = ({ value }) => {
 
   return (
     <div className={styles.modalActions}>
-      <Divider />
+      <Divider /> 
       <div className={styles.actionsContainer}>
         {players.map((player, i) => {
           const { id, name } = player;
@@ -19,7 +19,7 @@ const PointsActions = ({ value }) => {
               {showDiv && <div className={styles.valuePop}>+{value}</div>}
               <p>{player.name}</p>
               <div className={styles.buttons}>
-                <div className={styles.addBtn}>
+                <div className={styles.ptsBtn}>
                   <PointsButton
                     type={"increment"}
                     id={id}
@@ -29,7 +29,7 @@ const PointsActions = ({ value }) => {
                     setShowDiv={setShowDiv}
                   />
                 </div>
-                <div className={styles.subBtn}>
+                <div className={styles.ptsBtn}>
                   <PointsButton
                     type={"decrement"}
                     id={id}
