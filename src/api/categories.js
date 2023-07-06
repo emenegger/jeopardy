@@ -19,7 +19,12 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
     ...clue,
     value: clue.value * 2,
   }));
-  console.log("modifiedValsForFirstRound", modifiedValsForFirstRound);
+  // console.log("modifiedValsForFirstRound", modifiedValsForFirstRound);
+  const modifiedValsForSecondRound = initClues.map((clue)=> ({
+    ...clue,
+    value: clue.value * 4,
+  }))
+  console.log("modifiedValsForSecondRound", modifiedValsForSecondRound);
   const firstRoundVals = [200, 400, 600, 800, 1000];
   const secondRoundVals = [400, 800, 1200, 1600, 2000];
   // for each of the round vals, find one and add
@@ -32,7 +37,8 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
     return returnArr;
   };
   const vals = isDoubleJeopardy ? secondRoundVals : firstRoundVals;
-  const filteredVals = getFilteredClues(modifiedValsForFirstRound, vals);
+  const finalClues = isDoubleJeopardy ? modifiedValsForSecondRound : modifiedValsForFirstRound;
+  const filteredVals = getFilteredClues(finalClues, vals);
   data.clues = filteredVals;
   console.log(data.clues);
   return data;
