@@ -4,7 +4,7 @@ import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
-import { toggleReady } from "./playersSlice";
+// import { toggleReady } from "./playersSlice";
 
 const PlayersSelection = () => {
   const [numPlayers, setNumPlayers] = useState([]);
@@ -40,7 +40,7 @@ const PlayersSelection = () => {
                 return <PlayerForm key={i} playerNum={i + 1} />;
               })}
             <Link to={"../category-selection"}>
-              <button disabled={!disabledButton} onClick={()=> dispatch(toggleReady)}>Choose Categories</button>
+              <button disabled={!disabledButton}>Choose Categories</button>
             </Link>
           </form>
         </div>

@@ -1,6 +1,5 @@
 // single responsibility - display the home page?
-import React from "react";
-import styles from "./Hero.module.scss";
+import styles from "./styles.module.scss"
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
