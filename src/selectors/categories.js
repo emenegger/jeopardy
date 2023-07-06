@@ -27,9 +27,10 @@ export const getIsDoubleJeopardy = createSelector(
   }
 )
 
-// export const selectId = createSelector(
-//   selectBoardData,
-//   (addedCategories) => {
-//     addedCategories.find(category => category.id === Number(id))
-//   }
-// )
+export const getIsFinalJeopardy = createSelector(
+  selectNumAnswers,
+  (answers) => {
+    return answers >= 6;
+  }
+)
+
