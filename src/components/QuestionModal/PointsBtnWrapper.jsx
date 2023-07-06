@@ -44,8 +44,6 @@ const PointsBtnWrapper = ({ value, id, name }) => {
           <PointsButton
             type={"increment"}
             id={id}
-            name={name}
-            value={value}
             key={id}
             showAddedPoints={showAddedPoints}
           />
@@ -57,8 +55,6 @@ const PointsBtnWrapper = ({ value, id, name }) => {
           <PointsButton
             type={"decrement"}
             id={id}
-            name={name}
-            value={value}
             key={name + id}
             showAddedPoints={showAddedPoints}
           />
