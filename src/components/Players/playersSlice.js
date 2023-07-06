@@ -3,7 +3,6 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const playersSlice = createSlice({
   name: "players",
   initialState: [],
-  ready: false,
   reducers: {
     addPlayer: (state, action) => {
       // state = [...state, action.payload];
@@ -29,9 +28,6 @@ const playersSlice = createSlice({
         }),
         ...state.slice(i + 1),
       ];
-    },
-    toggleReady: (state) => {
-      state.ready = !state.ready;
     },
   },
 });
