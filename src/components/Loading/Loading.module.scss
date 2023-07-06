@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 20px solid #1c1cc8; /* Lighter whitesmoke border color */
+  border-top-color: whitesmoke; /* Transparent top border */
+  border-right-color: whitesmoke;
+  border-left-color: whitesmoke; /* Transparent top border */
+  z-index: 2;
+  position: absolute;
+  top: 15vh;
+  animation: spinner 2s infinite cubic-bezier(0.25, 0.1, 0.25, 1)
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

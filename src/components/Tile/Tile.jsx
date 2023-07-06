@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./styles.module.scss";
+import styles from "./Tile.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentQuestion,

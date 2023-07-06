@@ -12,6 +12,7 @@ import { setAllCategories } from "./categoriesSlice";
 
 import { useState } from "react";
 import NavBar from "../NavBar/NavBar";
+import Loading from "../Loading/Loading";
 
 // this is doing too much - goes against the single responsiblity principle
 
@@ -50,7 +51,7 @@ const Selection = () => {
   return (
     <div className={styles.wrapper}>
       <NavBar />
-      { isLoading ? (<h1>loading... </h1>) : (
+      { isLoading ? (<Loading />) : (
       <div className={styles.container}>
         <div className={styles.chooseMethod}>
           <button onClick={handleAutoCategories}>

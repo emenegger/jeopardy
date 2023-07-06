@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import styles from "./styles.module.scss";
+import styles from "./Question.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { showQuestion, showDailyDouble } from "./questionSlice";
-// import { addPointsToPlayer } from "../Players/playersSlice";
 import PointsButton from "./PointsButton";
 
 const QuestionModal = ({ wager }) => {

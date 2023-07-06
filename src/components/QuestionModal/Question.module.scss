@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import '../../constants.scss';
 
 .darkBG {
   background-color: rgba(0, 0, 0, 0.2);
@@ -21,7 +21,7 @@
 .modal {
   width: 60vw;
   height: 70vh;
-  background-color: rgb(22, 91, 209);
+  background-color: $secondary-blue;
   color: white;
   z-index: 10;
   // border-radius: 16px;
@@ -60,7 +60,7 @@
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  font-family: 'Libre Baskerville';
+  font-family: $libre;
 }
 
 .modalContent {
@@ -79,7 +79,7 @@
   width: 100%;
   // color: whitesmoke;
   color: #859eb8;
-  font-family: 'Libre Baskerville';
+  font-family: $libre;
   text-transform: uppercase;
   // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -117,14 +117,14 @@
 
 .answer {
   color: rgb(255, 255, 0);  
-  font-family: 'Libre Baskerville';
+  font-family: $libre;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
 
 .modalContent {
-  font-family: 'Libre Baskerville';
+  font-family: $libre;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

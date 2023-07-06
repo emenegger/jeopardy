@@ -1,0 +1,27 @@
+@import '../../constants.scss';
+
+.active {
+  background: $blue-gradient;
+  width: 100%;
+  height: 6vw; 
+  color: rgb(255, 208, 0);  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-family: $oswald;
+  :hover {
+    font-size: 3rem;
+    color: rgb(241, 228, 169);  
+  }
+}
+
+.inactive {
+  background: $blue-gradient;
+  height: 6vw; 
+  width: 100%;
+  border: 2px solid black;
+}
+
