@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const playersSlice = createSlice({
   name: "players",
@@ -32,7 +32,7 @@ const playersSlice = createSlice({
   },
 });
 
-export const { addPlayer, addPointsToPlayer, removePointsFromPlayer, toggleReady } =
+export const { addPlayer, addPointsToPlayer, removePointsFromPlayer } =
   playersSlice.actions;
 
 export default playersSlice.reducer;
