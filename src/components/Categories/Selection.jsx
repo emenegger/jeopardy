@@ -32,7 +32,7 @@ const Selection = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: "fetchCategories",
     queryFn: fetchCategories,
-    enabled: false,
+    enabled: true,
   });
 
   if (data && availableCategories.length === 0) {
@@ -43,7 +43,7 @@ const Selection = () => {
     setShowCategories(false);
     setHasSelected(true);
     for (let i = 0; i < 6; i++) {
-      const i = Math.floor(Math.random() * data.length);
+      const i = Math.floor(Math.random() * data?.length);
       const randomCategory = data[i];
       const response = await fetchCategoryDataById(randomCategory.id, isDailyDouble);
       dispatch(addBoardData(response));

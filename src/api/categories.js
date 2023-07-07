@@ -1,4 +1,5 @@
 export const fetchCategories = async () => {
+  console.log('fetching');
   const response = await fetch("https://jservice.io/api/categories?count=50");
   const data = await response.json();
   const fiveOrMoreClues = data

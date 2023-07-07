@@ -25,7 +25,7 @@ function App() {
   const showDdModal = doubleJeopardy && ddToggle;
   // refactor the show daily double modal?
 
-  console.log('final jeopardy?', finalJeopardy);
+  // console.log('final jeopardy?', finalJeopardy);
 
   useEffect(()=> {
     if (showDdModal) {

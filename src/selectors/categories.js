@@ -20,17 +20,20 @@ export const getTotalPagesOfCategories = createSelector(
     return Math.ceil(categories.length / perPage)
 });
 
+const doubleJeopardyNum = 2;
+const finalJeopardyNum = 4;
+
 export const getIsDoubleJeopardy = createSelector(
   selectNumAnswers,
   (answers) => {
-    return answers >= 3;
+    return answers >= doubleJeopardyNum && answers < finalJeopardyNum;
   }
 )
 
 export const getIsFinalJeopardy = createSelector(
   selectNumAnswers,
   (answers) => {
-    return answers >= 6;
+    return answers >= finalJeopardyNum;
   }
 )
 
