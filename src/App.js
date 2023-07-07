@@ -12,16 +12,20 @@ import {
   showQuestionSelector,
   showDailyDoubleSelector,
 } from "./selectors/questions";
-import { getIsDoubleJeopardy } from "./selectors/categories";
+import { getIsDoubleJeopardy, getIsFinalJeopardy } from "./selectors/categories";
 import { useEffect, useState } from "react";
+import FinalJeopardy from "./components/FinalJeopardy/FinalJeopardy";
 
 function App() {
   const showQuestion = useSelector(showQuestionSelector);
   const showDailyDouble = useSelector(showDailyDoubleSelector);
   const doubleJeopardy = useSelector(getIsDoubleJeopardy);
+  const finalJeopardy = useSelector(getIsFinalJeopardy);
   const [ddToggle, setDdToggle] = useState(true);
   const showDdModal = doubleJeopardy && ddToggle;
   // refactor the show daily double modal?
+
+  console.log('final jeopardy?', finalJeopardy);
 
   useEffect(()=> {
     if (showDdModal) {
@@ -30,6 +34,7 @@ function App() {
 
   return (
     <div className="App">
+      {finalJeopardy && <FinalJeopardy />}
       {showDdModal && !showQuestion && (
         <DoubleJeopardy setDdToggle={setDdToggle} />
       )}
