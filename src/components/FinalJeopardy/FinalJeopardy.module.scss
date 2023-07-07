@@ -1,13 +1,5 @@
 @import '../../constants.scss';
 
-.clue {
-  font-family: $libre;
-  color: whitesmoke;
-  text-transform: uppercase;
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(30, 44, 235, 0.9);
-}
-
 .container {
   position: fixed;
   top: 0;
@@ -18,10 +10,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 0, 0, 0.1);
+  background-color: rgb(0, 0, 0);
   backdrop-filter: blur(5px); /* Apply the backdrop blur effect */
   z-index: 3; /* Adjust the z-index as needed */
+  // background-image: url('https://pbs.twimg.com/media/FNhxC6WUcAEK-pc?format=jpg&name=large');
+  background-image: url('../../../src/images/final-jeopardy-background.svg');
+  background-size: 100% auto;  
+  background-repeat: no-repeat;
+  // background-position: center bottom 160%;
+  background-position: center;
 }
+
+.clueHeaderWrapper {
+  position: relative;
+  width: 60vw;
+  top: 180px;
+}
+
+.clue {
+  font-family: $libre;
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(30, 44, 235, 0.9);
+  // width: 60vw;
+  display: inline-block;
+  background: radial-gradient(circle, rgba(6,12,233,0.7) 5%, rgba(6,12,233,0.39) 95%);
+}
+
 
 .header {
   font-family: $oswald;
@@ -29,6 +45,8 @@
   color: whitesmoke;
   font-weight: 700;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(30, 44, 235, 0.9);
+  background: radial-gradient(circle, rgba(6,12,233,0.7) 5%, rgba(6,12,233,0.3) 95%);
+  display: inline-block;
 }

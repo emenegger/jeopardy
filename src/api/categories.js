@@ -7,6 +7,13 @@ export const fetchCategories = async () => {
   return fiveOrMoreClues;
 };
 
+export const fetchFinalJeopardy = async () => {
+  const response = await fetch('https://jservice.io/api/final');
+  const data = await response.json()
+  console.log(data)
+  return data[0];
+}
+
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 
 // this needs serious refactoring!
@@ -46,9 +53,3 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   return data;
 };
 
-
-export const fetchFinalJeopardy = async () => {
-  const response = await fetch('https://jservice.io/api/final');
-  const data = await response.json()
-  return data;
-}

@@ -29,10 +29,11 @@ const Selection = () => {
   const [hasSelected, setHasSelected] = useState(false);
   const dispatch = useDispatch();
 
-  const { isLoading, error, data } = useQuery(
-    "fetchCategories",
-    fetchCategories
-  );
+  const { isLoading, error, data } = useQuery({
+    queryKey: "fetchCategories",
+    queryFn: fetchCategories,
+    enabled: false,
+  });
 
   if (data && availableCategories.length === 0) {
     dispatch(setAllCategories(data));
