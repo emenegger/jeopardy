@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      {finalJeopardy && <FinalJeopardy />}
+      {finalJeopardy && !showQuestion && <FinalJeopardy />}
       {showDdModal && !showQuestion && (
         <DoubleJeopardy setDdToggle={setDdToggle} />
       )}

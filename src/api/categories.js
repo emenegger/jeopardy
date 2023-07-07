@@ -45,3 +45,10 @@ export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   // console.log(data.clues);
   return data;
 };
+
+
+export const fetchFinalJeopardy = async () => {
+  const response = await fetch('https://jservice.io/api/final');
+  const data = await response.json()
+  return data;
+}
