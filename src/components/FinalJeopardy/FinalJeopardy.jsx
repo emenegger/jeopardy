@@ -1,7 +1,7 @@
 import { fetchFinalJeopardy } from "../../api/categories";
 import styles from "./FinalJeopardy.module.scss";
 import { useQuery } from "react-query";
-import FinalJeopardyCategory from "./FinalJeopardyCategory";
+import PlayersDisplay from "../Players/PlayersDisplay";
 
 const FinalJeopardy = () => {
   // const [finalClue, setFinalClue] = useState({})
@@ -9,7 +9,7 @@ const FinalJeopardy = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: "fetchFinalJeoparydy",
     queryFn: fetchFinalJeopardy,
-    enabled: false,
+    // enabled: false,
   });
   console.log(isLoading, error, data)
   // const {category, answer, airdate, question} = data;
@@ -26,6 +26,7 @@ const FinalJeopardy = () => {
           <div className={styles.clue}>{data?.question}</div>{" "}
         </div>
       )}
+      <PlayersDisplay />
     </div>
   );
 };

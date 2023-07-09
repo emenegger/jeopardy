@@ -9,7 +9,17 @@ import { QueryClient, QueryClientProvider } from "react-query";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      // staleTime: twentyFourHoursInMs,
+    },
+  },
+});
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
