@@ -13,22 +13,22 @@ const FinalJeopardy = () => {
   });
   console.log(isLoading, error, data)
   // const {category, answer, airdate, question} = data;
+  // return (
+  //   <FinalJeopardyCategory />
+  // )
   return (
-    <FinalJeopardyCategory />
-  )
-//   return (
-//     <div className={styles.container}>
-//       {!data ? (
-//         <h1>loading</h1>
-//       ) : (
-//         <div className={styles.clueHeaderWrapper}>
-//           <div className={styles.header}>{data?.category?.title}</div>
-//           <div className={styles.clue}>{data?.question}</div>{" "}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-  }
+    <div className={styles.container}>
+      {!data ? (
+        <h1>loading</h1>
+      ) : (
+        <div className={styles.clueHeaderWrapper}>
+          <div className={styles.header}>{data?.category?.title}</div>
+          <div className={styles.clue}>{data?.question}</div>{" "}
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 export default FinalJeopardy;
