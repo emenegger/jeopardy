@@ -19,6 +19,9 @@ const NavBar = () => {
         <ol>
           <Link to="/board ">3. Start Game</Link>
         </ol>
+        <ol>
+          <Link to="/final-jeopardy ">4. Final Jeopardy</Link>
+        </ol>
       </nav>  
     </div>
   );

@@ -4,18 +4,12 @@ import { useQuery } from "react-query";
 import PlayersDisplay from "../Players/PlayersDisplay";
 
 const FinalJeopardy = () => {
-  // const [finalClue, setFinalClue] = useState({})
-
   const { isLoading, error, data } = useQuery({
     queryKey: "fetchFinalJeoparydy",
     queryFn: fetchFinalJeopardy,
     // enabled: false,
   });
   console.log(isLoading, error, data)
-  // const {category, answer, airdate, question} = data;
-  // return (
-  //   <FinalJeopardyCategory />
-  // )
   return (
     <div className={styles.container}>
       {!data ? (
