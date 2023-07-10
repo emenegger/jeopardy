@@ -15,7 +15,7 @@ const FinalJeopardy = () => {
   });
   console.log(isLoading, error, data);
 
-  if (data)
+  if (data && !readyForQuestion)
     return (
       <FinalJeopardyCategory
         data={data}
@@ -24,7 +24,7 @@ const FinalJeopardy = () => {
     );
   if (isLoading) return <h1>... is loading</h1>;
   if (error) return <h1>error</h1>;
-  if (readyForQuestion) return <FinalJeopardyQuestion />;
+  if (readyForQuestion) return <FinalJeopardyQuestion data={data}/>;
 };
 
 /*(

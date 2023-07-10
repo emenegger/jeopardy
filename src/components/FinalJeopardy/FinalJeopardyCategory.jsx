@@ -2,7 +2,7 @@ import styles from "./FinalJeopardy.module.scss";
 import PlayersDisplay from "../Players/PlayersDisplay";
 import FinalJeopardyBids from "./FinalJeopardyBids";
 
-const FinalJeopardyCategory = ({ data }) => {
+const FinalJeopardyCategory = ({ data, setReadyForQuestion }) => {
   return (
     <div className={styles.container}>
       <div className={styles.categoryContainer}>
@@ -10,7 +10,7 @@ const FinalJeopardyCategory = ({ data }) => {
           {data?.category?.title} 
         </h1>
       </div>
-      <FinalJeopardyBids />
+      <FinalJeopardyBids setReadyForQuestion={setReadyForQuestion}/>
       <PlayersDisplay />
     </div>
   );

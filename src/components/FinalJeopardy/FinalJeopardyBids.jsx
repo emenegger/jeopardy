@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import styles from "./FinalJeopardy.module.scss";
 import BidForm from "./BidForm";
 import { useState } from "react";
+// import { Link } from "react-router-dom";
 
-const FinalJeopardyBids = () => {
+const FinalJeopardyBids = ({ setReadyForQuestion }) => {
   const data = useSelector((state) => state.players);
   // test data so you don't have to start the whole app over when testing
   const test = [
@@ -12,7 +13,7 @@ const FinalJeopardyBids = () => {
     { name: "John", points: 700, id: 3 },
   ];
   const players = data.length > 0 ? data : test;
-  
+
   const initState = Array(Number(players.length)).fill(0);
   const [bids, setBids] = useState(initState);
 
@@ -29,7 +30,9 @@ const FinalJeopardyBids = () => {
           />
         ))}
       </div>
-      <button>Go to Final Jeopardy Clue</button>
+      <button onClick={() => setReadyForQuestion(true)}>
+        Go to Final Jeopardy Clue
+      </button>
     </div>
   );
 };
