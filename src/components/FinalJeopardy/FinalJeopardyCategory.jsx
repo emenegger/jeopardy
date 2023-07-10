@@ -1,5 +1,6 @@
 import styles from "./FinalJeopardy.module.scss";
 import PlayersDisplay from "../Players/PlayersDisplay";
+import FinalJeopardyBids from "./FinalJeopardyBids";
 
 const FinalJeopardyCategory = ({ data }) => {
   return (
@@ -9,6 +10,7 @@ const FinalJeopardyCategory = ({ data }) => {
           {data?.category?.title} 
         </h1>
       </div>
+      <FinalJeopardyBids />
       <PlayersDisplay />
     </div>
   );

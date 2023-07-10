@@ -74,7 +74,28 @@
   left: 62vw;
   font-size: calc(1 * 1.6vw);
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: center;
   text-transform: capitalize;
+}
+
+.bidsContainer {
+  background-image: $blue-gradient;
+  height: 20vh;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 30vh;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  button {
+    width: 50%;
+  }
+}
+
+.bidsForm {
+  display: flex;
+  justify-content: center;
 }
