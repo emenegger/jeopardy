@@ -81,21 +81,23 @@
 
 .bidsContainer {
   background-image: $blue-gradient;
-  height: 20vh;
   z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 30vh;
+  top: 5vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 10px;
+  padding: 2.5rem;
   color: whitesmoke;
+  border-radius: 0.5rem;
+
     button {
     margin: 10px;
     width: 50%;
   }
+  
 }
 
 .input {
@@ -112,4 +114,33 @@
   position: relative;
   right: 2vw;
   color:rgb(96, 96, 96)
+}
+
+.textForm {
+  input {
+    border: none;
+    border-bottom: 2px solid rgb(248, 246, 246);
+    margin: 0.5rem;
+    // height: 1.5rem;
+    // width: 12vw;
+    background-color: rgb(255, 255, 255, 0.2);
+    // background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    font-family: $playerScript;
+    font-size: 1.5rem;
+    padding: 0.25rem;
+  }
+}
+
+.btn {
+  align-self: center;
+  background-color: rgb(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  border: none;
+  // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color:whitesmoke;
+  border-radius: 0.25rem;
 }
