@@ -42,7 +42,7 @@ const FinalJeopardy = () => {
           bids={bids}
         />
       );
-    if (isLoading) return <h1>... is loading</h1>;
+    if (isLoading) return <h1>... loading</h1>;
     if (error) return <h1>error</h1>;
     if (readyForQuestion) return <FinalJeopardyQuestion data={data} bids={bids}/>;
   }
