@@ -17,6 +17,7 @@ const PointsBtnWrapper = ({ value, id, name }) => {
   const dispatch = useDispatch();
 
   const handleClick = (id, points, type) => {
+    console.log(`${type}ing ${points}`)
     if (type === "increment") {
       dispatch(addPointsToPlayer({ id, points }));
       setShowPosValue(true);

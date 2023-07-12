@@ -1,34 +1,39 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./FinalJeopardy.module.scss";
 import BidForm from "./BidForm";
 import { useState } from "react";
+import AnswersInput from "./AnswersInput";
+import { addPlayer } from "../Players/playersSlice";
 // import { Link } from "react-router-dom";
 
-const FinalJeopardyBids = ({ setReadyForQuestion }) => {
-  const data = useSelector((state) => state.players);
-  // test data so you don't have to start the whole app over when testing
-  const test = [
-    { name: "Evan", points: 300, id: 1 },
-    { name: "Frank", points: 700, id: 2 },
-    { name: "John", points: 700, id: 3 },
-  ];
-  const players = data.length > 0 ? data : test;
+const FinalJeopardyBids = ({ setReadyForQuestion, setBids, bids }) => {
+  const players = useSelector((state) => state.players);
 
-  const initState = Array(Number(players.length)).fill(0);
-  const [bids, setBids] = useState(initState);
+  // const [bids, setBids] = useState(initState);
+  console.log(bids)
 
   return (
     <div className={styles.bidsContainer}>
       <div className={styles.bidsForm}>
-        {players.map((player, i) => (
-          <BidForm
-            player={player}
-            key={player.id}
-            i={i}
-            setBids={setBids}
-            bids={bids}
-          />
-        ))}
+        {bids && players.map((player, i) => {
+          const handleChange = (e) => {
+            console.log(e.target.value);
+            setBids([
+              ...bids.slice(0, i),
+              Number(e.target.value),
+              ...bids.slice(i + 1),
+            ]);
+          };
+          return (
+            <AnswersInput
+              player={player}
+              type={"category"}
+              handleChange={handleChange}
+              state={bids[i]}
+              handleSubmit={() => {}}
+            />
+          );
+        })}
       </div>
       <button onClick={() => setReadyForQuestion(true)}>
         Go to Final Jeopardy Clue

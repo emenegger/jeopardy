@@ -1,19 +1,29 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./FinalJeopardy.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnswersInput from "./AnswersInput";
+import { addPlayer } from "../Players/playersSlice";
 
 const Answers = () => {
-  const data = useSelector((state) => state.players);
+  const players = useSelector((state) => state.players);
+  const dispatch = useDispatch();
   // test data so you don't have to start the whole app over when testing
   const test = [
-    { name: "Evan", points: 300, id: 1, answer: "" },
-    { name: "Frank", points: 700, id: 2, answer: "" },
-    { name: "John", points: 700, id: 3, answer: "" },
+    { name: "Evan", points: 300, id: 1 },
+    { name: "Frank", points: 700, id: 2 },
+    { name: "John", points: 700, id: 3 },
   ];
-  const players = data.length > 0 ? data : test;
 
-  const [answers, setAnswers] = useState(players);
+  // useEffect(() => {
+    if (players.length === 0 && !players.includes(test[0])) {
+      dispatch(addPlayer(test[0]));
+      dispatch(addPlayer(test[1]))
+    }
+  // },[players]);
+
+  // const players = data.length > 0 ? data : test;
+
+  const [answers, setAnswers] = useState(["", "", ""]);
 
   return (
     <div className={styles.bidsContainer}>
@@ -23,7 +33,7 @@ const Answers = () => {
             console.log(e.target.value);
             setAnswers([
               ...answers.slice(0, i),
-              Number(e.target.value),
+              e.target.value,
               ...answers.slice(i + 1),
             ]);
           };
@@ -43,9 +53,6 @@ const Answers = () => {
           );
         })}
       </div>
-      {/* <button onClick={() => setReadyForQuestion(true)}>
-        Go to Final Jeopardy Clue
-      </button> */}
     </div>
   );
 };
