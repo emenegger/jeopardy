@@ -4,6 +4,9 @@ import styles from "./Players.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import classNames from "classnames";
+import { v4 as uuidv4 } from 'uuid';
+
 // import { toggleReady } from "./playersSlice";
 
 const PlayersSelection = () => {
@@ -12,6 +15,8 @@ const PlayersSelection = () => {
   const players = useSelector((state) => state.players);
   const disabledButton =
     players.length > 0 && players.length === numPlayers.length;
+
+  const optionValues = ['Select the number of players', 1, 2, 3, 4, 5, 6]
 
   return (
     <div className={styles.wrapper}>
@@ -25,14 +30,11 @@ const PlayersSelection = () => {
           id="players-select"
           onChange={(e) => setNumPlayers(Array(Number(e.target.value)).fill(1))}
         >
-          <option value={0}>Select the number of players</option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-          <option value={6}>6</option>
+          {optionValues.map((option, i) => <option value={i} key={uuidv4()}>{option}</option>)}
         </select>
+        {/* <div className={classNames(styles.playerForm, {
+          [styles.hidden]: numPlayers.length > 1
+        })}> */}
         <div>
           <form>
             {numPlayers &&

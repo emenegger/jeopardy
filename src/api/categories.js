@@ -1,6 +1,9 @@
 export const fetchCategories = async () => {
-  console.log('fetching');
-  const response = await fetch("https://jservice.io/api/categories?count=50");
+  console.log('fetching categories');
+  const count = 75;
+  const offset = Math.floor(Math.random(0, 1) * 25000)
+  // const offset = 25000;
+  const response = await fetch(`https://jservice.io/api/categories?count=${count}&offset=${offset}`);
   const data = await response.json();
   const fiveOrMoreClues = data
     .filter((d) => d.clues_count >= 5 && d.id)
