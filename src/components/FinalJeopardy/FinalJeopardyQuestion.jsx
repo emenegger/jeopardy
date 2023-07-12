@@ -13,7 +13,7 @@ const FinalJeopardyQuestion = ({ data, bids }) => {
         <div className={styles.clue}>{data?.question}</div>
         {/* <div className={styles.clue}>{bids.map(bid => <p>{bid}</p>)}</div> */}
       </div>
-      <Answers />
+      <Answers bids={bids} />
       <PlayersDisplay />
     </div>
   );

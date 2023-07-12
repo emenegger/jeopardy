@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import AnswersInput from "./AnswersInput";
 import { addPlayer } from "../Players/playersSlice";
 
-const Answers = () => {
+const Answers = ({bids}) => {
   const players = useSelector((state) => state.players);
   const dispatch = useDispatch();
   // test data so you don't have to start the whole app over when testing
@@ -14,16 +14,13 @@ const Answers = () => {
     { name: "John", points: 700, id: 3 },
   ];
 
-  // useEffect(() => {
-    if (players.length === 0 && !players.includes(test[0])) {
-      dispatch(addPlayer(test[0]));
-      dispatch(addPlayer(test[1]))
-    }
-  // },[players]);
-
-  // const players = data.length > 0 ? data : test;
+  if (players.length === 0 && !players.includes(test[0])) {
+    dispatch(addPlayer(test[0]));
+    dispatch(addPlayer(test[1]));
+  }
 
   const [answers, setAnswers] = useState(["", "", ""]);
+  console.log(bids)
 
   return (
     <div className={styles.bidsContainer}>
@@ -49,6 +46,7 @@ const Answers = () => {
               state={answers[i]}
               handleSubmit={handleSubmit}
               button={true}
+              bid={bids[i]}
             />
           );
         })}

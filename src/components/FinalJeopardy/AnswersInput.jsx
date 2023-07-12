@@ -11,11 +11,12 @@ const AnswersInput = ({
   state,
   type,
   handleSubmit,
+  bid,
 }) => {
   // this is essentially the same as the bids component - lets refactor and reuse
   const [showVal, setShowVal] = useState(false);
   const {name, id, points } = player;
-  console.log(state)
+  console.log(bid)
 
   const handleToggleVisibility = () => {
     setShowVal((prevShowNumber) => !prevShowNumber);
@@ -37,7 +38,7 @@ const AnswersInput = ({
           <VisibilityOffIcon onClick={handleToggleVisibility} />
         )}
       </div>
-      {type !== 'category' &&  <PointsBtnWrapper value={1111} id={id} name={null}/>}
+      {type !== 'category' &&  <PointsBtnWrapper value={bid} id={id} name={null}/>}
     </form>
   );
 };
