@@ -12,6 +12,10 @@ export const categoriesSlice = createSlice({
     setAllCategories: (state, action) => {
       state.availableCategories = action.payload;
     },
+    addMoreCategories: (state, action) => {
+      console.log(current(state.availableCategories));  
+      state.availableCategories = [...state.availableCategories, ...action.payload]
+    },
     removeAvailableCategory: (state, action) => {
       // this works, but its being reset by the
       state.availableCategories = state.availableCategories.filter(
@@ -36,6 +40,7 @@ export const categoriesSlice = createSlice({
 
 export const {
   setAllCategories,
+  addMoreCategories,
   incrementCategoryPage,
   decrementCategoryPage,
   removeAvailableCategory,

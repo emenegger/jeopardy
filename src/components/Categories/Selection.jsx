@@ -8,8 +8,8 @@ import SelectedCategories from "./SelectedCategories";
 import { useQuery } from "react-query";
 import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
 import { addBoardData } from "../Board/boardSlice";
-import { setAllCategories, removeAvailableCategory } from "./categoriesSlice";
-import { getIsDoubleJeopardy } from "../../selectors/categories";
+import { setAllCategories, removeAvailableCategory, addMoreCategories } from "./categoriesSlice";
+import { getIsDoubleJeopardy, getTotalPagesOfCategories } from "../../selectors/categories";
 import { mockData, mockCategoriesData } from "../../public/mockdata";
 
 import { useState } from "react";
@@ -26,6 +26,8 @@ const Selection = () => {
     (state) => state.categories.availableCategories
   );
   const isDailyDouble = useSelector(getIsDoubleJeopardy);
+  const pageNumber = useSelector((state) => state.categories.categoryPage);
+  const totalPages = useSelector(getTotalPagesOfCategories);
 
   const [showCategories, setShowCategories] = useState(false);
   const [hasSelected, setHasSelected] = useState(false);
@@ -38,6 +40,7 @@ const Selection = () => {
   });
 
   if (data && availableCategories.length === 0) {
+    console.log(data);
     dispatch(setAllCategories(data));
   }
 
@@ -65,6 +68,11 @@ const Selection = () => {
     setShowCategories(true);
   };
 
+  const handleGetMoreCategories = async () => {
+    const data = await fetchCategories();
+    dispatch(addMoreCategories(data));
+  }
+
   const isDisabled = boardData.length !== 6;
 
   return (
@@ -88,6 +96,15 @@ const Selection = () => {
                 className={styles.selectBtn}
               >
                 Select Your Own Categories
+              </button>
+              <button
+                onClick={handleGetMoreCategories}
+                className={classNames(styles.selectBtn, {
+                  [styles.disabled]: pageNumber +1 !== totalPages
+                })}
+                // disabled={pageNumber +1 !== totalPages}
+              >
+                See More Categories
               </button>
             </div>
             <div className={styles.selectionContainer}>

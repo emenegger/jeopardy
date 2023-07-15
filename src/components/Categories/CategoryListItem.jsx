@@ -18,7 +18,7 @@ const CategoryListItem = ({ category, type }) => {
   // const addedCategories = useSelector(selectBoardData);
   const isDailyDouble = useSelector(getIsDoubleJeopardy);
   // const isSelected = addedCategories.some((c) => c.id === category.id);
-  console.log(category);
+  // console.log(category);
 
   const addCategoryData = async (categoryData) => {
     const data = await fetchCategoryDataById(categoryData.id, isDailyDouble);

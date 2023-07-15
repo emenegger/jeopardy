@@ -1,6 +1,6 @@
 import React from "react";
 import Tile from "../Tile/Tile";
-import styles from "./styles.module.scss";
+import styles from "./Column.module.scss";
 
 const Column = ({ columnData, column }) => {
   return (
