@@ -77,10 +77,16 @@ const Selection = () => {
           <div className={styles.categorySelectBox}>
             <h2>Choose your Categories</h2>
             <div className={styles.chooseMethod}>
-              <button onClick={handleAutoCategories} className={styles.selectBtn}>
+              <button
+                onClick={handleAutoCategories}
+                className={styles.selectBtn}
+              >
                 Generate Random Categories
               </button>
-              <button onClick={handleChooseCategories} className={styles.selectBtn}>
+              <button
+                onClick={handleChooseCategories}
+                className={styles.selectBtn}
+              >
                 Select Your Own Categories
               </button>
             </div>
@@ -90,21 +96,20 @@ const Selection = () => {
                   <CategoryList /> <Pagination />{" "}
                 </>
               )}
-              
             </div>
           </div>
           <div className={styles.rightItems}>
-          {hasSelected && <SelectedCategories />}
-          <Link to={!isDisabled && "../board"}>
-                <button
-                  className={classNames(styles.selectBtn, {
-                    [styles.disabled]: isDisabled,
-                  })}
-                  disabled={isDisabled} //* refactor this
-                >
-                  Ready to Start?
-                </button>
-              </Link>
+            {hasSelected && <SelectedCategories />}
+            <Link to={!isDisabled && "../board"}>
+              <button
+                className={classNames(styles.readyBtn, {
+                  [styles.disabled]: isDisabled,
+                })}
+                disabled={isDisabled} //* refactor this
+              >
+                Ready to Start?
+              </button>
+            </Link>
           </div>
         </div>
       )}

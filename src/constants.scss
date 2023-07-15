@@ -27,3 +27,16 @@ $playerScript: 'Gloria Hallelujah', sans-serif;
   font-weight: 300; 
   padding: 20px;
 }
+
+@mixin flatBtn {
+  align-self: center;
+  background-color: rgb(22, 91, 209);
+  padding: 0.55rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: $inter;
+  font-weight: 600;
+  color: whitesmoke;
+  transition: transform 0.3s;
+  margin: 1em;
+}
