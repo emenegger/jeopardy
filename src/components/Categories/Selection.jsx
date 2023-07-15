@@ -10,6 +10,7 @@ import { fetchCategories, fetchCategoryDataById } from "../../api/categories";
 import { addBoardData } from "../Board/boardSlice";
 import { setAllCategories, removeAvailableCategory } from "./categoriesSlice";
 import { getIsDoubleJeopardy } from "../../selectors/categories";
+import { mockData, mockCategoriesData } from "../../public/mockdata";
 
 import { useState } from "react";
 import NavBar from "../NavBar/NavBar";
@@ -37,6 +38,10 @@ const Selection = () => {
 
   if (data && availableCategories.length === 0) {
     dispatch(setAllCategories(data));
+  }
+
+  if (error && availableCategories.length === 0) {
+    dispatch(setAllCategories(mockCategoriesData));
   }
 
   const handleAutoCategories = async () => {

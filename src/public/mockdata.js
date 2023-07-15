@@ -1,4 +1,4 @@
-{
+export const mockData = {
   id: 2577,
   title: "ends in 'x'",
   clues_count: 30,
@@ -321,5 +321,108 @@
       game_id: 4177,
       invalid_count: null,
     },
-  ];
+  ]
 }
+
+export const mockCategoriesData = [
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  },
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+  { 
+    id: 2577,
+    title: "ends in 'x'",
+    clues_count: 30 
+  }, 
+]

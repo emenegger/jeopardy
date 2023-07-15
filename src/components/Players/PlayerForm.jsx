@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPlayer } from "./playersSlice";
+import styles from "./Players.module.scss";
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
 const PlayerForm = ({ playerNum }) => {
   const dispatch = useDispatch();
@@ -22,11 +24,14 @@ const PlayerForm = ({ playerNum }) => {
   const handleChange = (e) => setName(e.target.value);
 
   return (
-    <div>
+    <div className={styles.playerForm}>
       <label>Enter Player {playerNum}'s name: </label>
       <input type="text" value={name} onChange={handleChange}></input>{" "}
       {buttonSubmit ? (
-        <button disabled>✅</button>
+        <button disabled>
+          <CheckCircleOutlineOutlinedIcon color='success' fontSize="small"/>
+          
+        </button>
       ) : (
         <button onClick={handleAddPlayer}>submit</button>
       )}

@@ -1,0 +1,26 @@
+@import '../../constants.scss';
+
+
+.selectListItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.getStartedBtn {
+  align-self: center;
+  background: radial-gradient(circle, rgba(251, 249, 249, 0.7), rgba(244, 243, 243, 0.99));
+  font-size: 1.5rem;
+  padding: 0.55rem;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0.25rem;
+  font-family: $inter;
+  font-weight: 600;
+  color: $secondary-blue;
+  transition: transform 0.3s;
+  margin: 1em;
+}
+
+.getStartedBtn:active {
+  transform: translateY(4px);
+}

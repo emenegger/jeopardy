@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { resetBoardData } from "../Board/boardSlice";
-import styles from "./styles.module.scss";
+import styles from "./Hero.module.scss";
 
 const RoundModal = ({ setModal, round }) => {
   const dispatch = useDispatch();
