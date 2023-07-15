@@ -7,7 +7,7 @@ const CategoryList = () => {
   
   return (
     <div>
-      <h2>Select Six Categories</h2>
+      <h3>Select Six Categories</h3>
       {paginatedCategories?.map((category) => (
         <CategoryListItem
           key={category.id}

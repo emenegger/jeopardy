@@ -1,0 +1,91 @@
+@import '../../constants.scss';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.categorySelectBox {
+  position: relative;
+  top: 10vh; 
+  width: 50vw;
+  @include box;
+  h2, h4 {
+    font-family: $inter;  
+    color: #121212;
+    margin: 1rem;
+  }
+  h2 {
+    font-size: 3.75rem;
+    font-weight: 900; 
+  }
+}
+
+.selectListItem {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.selectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background: $blue-gradient;
+  height: 100vh;
+}
+
+.selectBtn {
+  align-self: center;
+  // background: radial-gradient(circle, rgba(251, 249, 249, 0.7), rgba(244, 243, 243, 0.99));
+  background-color: rgb(22, 91, 209);
+  // font-size: 1.5rem;
+  padding: 0.55rem;
+  border: none;
+  // box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+  border-radius: 0.5rem;
+  font-family: $inter;
+  font-weight: 600;
+  color: whitesmoke;
+  transition: transform 0.3s;
+  margin: 1em;
+}
+
+.selectBtn:hover {
+  background-color: rgb(119, 149, 199);
+}
+.selectBtn:active {
+  background-color: rgb(2, 65, 173);
+}
+
+.disabled {
+  background-color: rgb(212, 211, 211);
+}
+
+.selectedCategories {
+  position: relative;
+  top: 10vh; 
+  @include box;
+  width: 20vw;
+  h3 {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  button {
+    background-color: none !important;
+    border: none;
+    margin: 1rem;  
+  }
+}

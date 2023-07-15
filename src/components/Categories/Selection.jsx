@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 //* update this to make selection its own slice
-import styles from "./styles.module.scss";
+import styles from "./Selection.module.scss";
 import CategoryList from "./CategoryList";
 import { Link, redirect } from "react-router-dom";
 import Pagination from "./Pagination";
@@ -15,6 +15,7 @@ import { mockData, mockCategoriesData } from "../../public/mockdata";
 import { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import Loading from "../Loading/Loading";
+import classNames from "classnames";
 
 // this is doing too much - goes against the single responsiblity principle
 
@@ -50,7 +51,10 @@ const Selection = () => {
     for (let i = 0; i < 6; i++) {
       const i = Math.floor(Math.random() * data?.length);
       const randomCategory = data[i];
-      const response = await fetchCategoryDataById(randomCategory.id, isDailyDouble);
+      const response = await fetchCategoryDataById(
+        randomCategory.id,
+        isDailyDouble
+      );
       dispatch(addBoardData(response));
       dispatch(removeAvailableCategory(randomCategory));
     }
@@ -61,37 +65,48 @@ const Selection = () => {
     setShowCategories(true);
   };
 
+  const isDisabled = boardData.length !== 6;
+
   return (
     <div className={styles.wrapper}>
       <NavBar />
-      { isLoading ? (<Loading />) : (
-      <div className={styles.container}>
-        <div className={styles.chooseMethod}>
-          <button onClick={handleAutoCategories}>
-            Generate Random Categories
-          </button>
-          <button onClick={handleChooseCategories}>
-            Select Your Categories
-          </button>
-        </div>
-        <div className={styles.selectionContainer}>
-          {showCategories && (
-            <>
-              <CategoryList /> <Pagination />{" "}
-            </>
-          )}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.categorySelectBox}>
+            <h2>Choose your Categories</h2>
+            <div className={styles.chooseMethod}>
+              <button onClick={handleAutoCategories} className={styles.selectBtn}>
+                Generate Random Categories
+              </button>
+              <button onClick={handleChooseCategories} className={styles.selectBtn}>
+                Select Your Own Categories
+              </button>
+            </div>
+            <div className={styles.selectionContainer}>
+              {showCategories && (
+                <>
+                  <CategoryList /> <Pagination />{" "}
+                </>
+              )}
+              
+            </div>
+          </div>
+          <div className={styles.rightItems}>
           {hasSelected && <SelectedCategories />}
-          <Link to="../board">
-            <button
-              disabled={
-                boardData.length === 6 && players.length > 0 ? false : true
-              } //* refactor this
-            >
-              Ready to Start?
-            </button>
-          </Link>
+          <Link to={!isDisabled && "../board"}>
+                <button
+                  className={classNames(styles.selectBtn, {
+                    [styles.disabled]: isDisabled,
+                  })}
+                  disabled={isDisabled} //* refactor this
+                >
+                  Ready to Start?
+                </button>
+              </Link>
+          </div>
         </div>
-      </div>
       )}
     </div>
   );

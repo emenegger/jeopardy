@@ -1,7 +1,7 @@
 import React from "react";
 import { addBoardData, removeBoardData } from "../Board/boardSlice";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles.module.scss";
+import styles from "./Selection.module.scss";
 import { selectBoardData } from "../../selectors/categories";
 import { fetchCategoryDataById } from "../../api/categories";
 import { removeAvailableCategory, addAvailableCategory } from "./categoriesSlice";

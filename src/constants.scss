@@ -17,10 +17,13 @@ $inter-regular: 400;
 $inter-bold: 900;
 $arsenal: 'Arsenal', sans-serif;
 $playerScript: 'Gloria Hallelujah', sans-serif;
-// @font-face {
-//   font-family: 'Jeopardy';
-//   // src: url('../fonts/my-custom-font.ttf') format('truetype');
-//   src: url('../../fonts/gyparody\ hv.ttf') format('truetype');
-// }
 
-// $jeopardy-font: 'Jeopardy';
+// mixins
+@mixin box {
+  background-color: whitesmoke;
+  min-height: 20vh;
+  border-radius: 4px;
+  font-family: $inter;
+  font-weight: 300; 
+  padding: 20px;
+}
