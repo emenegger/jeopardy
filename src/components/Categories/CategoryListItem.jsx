@@ -11,13 +11,14 @@ import {
 import { getIsDoubleJeopardy } from "../../selectors/categories";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
+import classNames from "classnames";
 
 const CategoryListItem = ({ category, type }) => {
   const dispatch = useDispatch();
   // const addedCategories = useSelector(selectBoardData);
   const isDailyDouble = useSelector(getIsDoubleJeopardy);
   // const isSelected = addedCategories.some((c) => c.id === category.id);
-  console.log(category)
+  console.log(category);
 
   const addCategoryData = async (categoryData) => {
     const data = await fetchCategoryDataById(categoryData.id, isDailyDouble);
@@ -38,17 +39,35 @@ const CategoryListItem = ({ category, type }) => {
   return (
     <li className={styles.selectListItem}>
       {category.title}
-      {type === "Select" ? (
-        <AddCircleOutlineOutlinedIcon
-          className={styles.addCategoryBtn}
-          onClick={handleClick}
-        />
-      ) : (
-        <RemoveCircleOutlineOutlinedIcon
-          color={"error"}
-          onClick={handleClick}
-        />
-      )}
+      <div className={styles.clueBarContainer}>
+        {/* {type === "Select" && ( */}
+          <>
+            <p> Clues Quality:</p>
+            <div className={styles.clueStrengthBar}>
+              <div
+                className={classNames(styles.bar, {
+                  [styles.strong]: category.clues_count > 15,
+                  [styles.medium]:
+                    category.clues_count >= 7 && category.clues_count <= 15,
+                  [styles.weak]: category.clues_count < 7,
+                })}
+                // style={{width: '20px'} }
+              ></div>
+            </div>
+          </>
+        {/* )} */}
+        {type === "Select" ? (
+          <AddCircleOutlineOutlinedIcon
+            className={styles.addCategoryBtn}
+            onClick={handleClick}
+          />
+        ) : (
+          <RemoveCircleOutlineOutlinedIcon
+            color={"error"}
+            onClick={handleClick}
+          />
+        )}
+      </div>
     </li>
   );
 };
