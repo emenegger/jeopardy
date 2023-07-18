@@ -1,5 +1,5 @@
 // single responsibility - display the home page?
-import styles from "./Hero.module.scss"
+import styles from "./Hero.module.scss";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const HeroPage = () => {
           categories from previous Jeopardy! games.
         </h3>
         <Link to="/player-selection">
-          <Button label={"Get Started"} className={"getStartedBtn"}/>
+          <Button label={"Get Started"} className={"getStartedBtn"} />
         </Link>
       </div>
     </div>

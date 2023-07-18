@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import classNames from "classnames";
+import EnterPlayer from "./EnterPlayer";
 
 // import { toggleReady } from "./playersSlice";
 
@@ -19,7 +20,7 @@ const PlayersSelection = () => {
 
   const optionValues = ["Select the number of players", 1, 2, 3, 4, 5, 6];
 
-  console.log(disabledButton);
+  // console.log(disabledButton);
 
   return (
     <div className={styles.wrapper}>
@@ -59,6 +60,7 @@ const PlayersSelection = () => {
               Choose Categories
             </button>
           </Link>
+          <EnterPlayer />
         </div>
       </div>
     </div>
