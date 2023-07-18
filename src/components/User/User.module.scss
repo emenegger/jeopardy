@@ -1,0 +1,153 @@
+@import '../../constants.scss';
+
+.signUpBox {
+  margin: 3rem;
+  @include box;
+  @include flexColumn;
+  width: 25vw;
+  font-size: 1.5rem;
+  form {
+    box-shadow: none;
+    padding: 1rem;
+    font-family: $inter;
+    width: 80%;
+    align-self: center;
+  }
+  input {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    font-family: $playerScript;
+    font-size: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  button {
+    margin-top: 1rem;
+    width: 100%;
+    @include flatBtn;
+  }
+  button:active {
+    transform: translateY(5px);
+  }
+}
+
+.userContainer {
+  @include flexColumn;
+}
+
+.buzzerInner {
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;
+  // background-color: $kind-blue;
+  background: linear-gradient(to bottom, #103b84, #165bd1); 
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 50px;
+  cursor: pointer;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.buzzer {
+  margin: 2rem;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  // background-color: #F5F5F5;
+  background: linear-gradient(to bottom, #b7b6b6, #c6c5c5);
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 60px;
+  cursor: pointer;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  @include flexColumn
+}
+
+.buzzerInner:active {
+  transform: translateY(3);
+}
+
+
+.button{
+  position:relative;
+  padding:0;
+  width:200px;
+  height:200px;
+  // border:4px solid #888888;
+  border:4px solid $kind-blue;
+  outline:none;
+  background-color:#f4f5f6;
+  border-radius: 40px;
+  box-shadow:  -6px -20px 35px #ffffff, -6px -10px 15px #ffffff, -20px 0px 30px #ffffff, 6px 20px 25px rgba(0,0,0,0.2);
+  box-shadow:  -3px -10px 35px #ffffff, -3px -10px 15px #ffffff, -10px 0px 30px #ffffff, 3px 10px 25px rgba(0,0,0,0.2);
+  transition: .13s ease-in-out;
+  cursor:pointer;
+  &:active{
+    box-shadow:none;
+    .button__content{
+      box-shadow: none;
+      .button__text, .button__icon{
+        transform:translate3d(0px, 0px, 0px);
+      }
+    }
+  }
+  &__content{
+    position:relative;
+    @include flexColumn;
+    font-family: $inter;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: $kind-blue;
+    width:100%;
+    height:100%;    
+    box-shadow:inset 0px -8px 0px #dddddd, 0px -8px 0px #f4f5f6;
+    border-radius: 40px;
+    transition: .13s ease-in-out; 
+    
+    z-index:1;
+  }
+  // &__icon{
+  //   position:relative;
+  //   display:flex;
+    
+  //   transform:translate3d(0px, -4px, 0px);
+  //   grid-column:4;
+  //   align-self:start;
+  //   justify-self:end;
+  //   width:32px;
+  //   height:32px;
+  //   transition: .13s ease-in-out; 
+  //   svg{
+  //     width:32px;
+  //     height:32px;
+  //     fill:#aaaaaa;
+  //   }
+  // }
+  &__text{
+      position:relative;
+    
+      transform:translate3d(0px, -4px, 0px);
+      margin:0;
+      align-self:end;
+      grid-column:1/5;
+      grid-row:2;
+
+      text-align:center;
+      font-size: 32px;
+      background-color: #888888;
+      color: transparent;
+      text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+      -webkit-background-clip: text;
+         -moz-background-clip: text;
+              background-clip: text;
+      transition: .13s ease-in-out; 
+  }
+}

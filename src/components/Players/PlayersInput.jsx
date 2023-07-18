@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import PlayerForm from "./PlayerForm";
 import NavBar from "../NavBar/NavBar";
 // import Button from "../Button/Button";
+// import EnterPlayer from "./EnterPlayer";
 
-import styles from "./Players.module.scss";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import classNames from "classnames";
-import EnterPlayer from "./EnterPlayer";
 
-// import { toggleReady } from "./playersSlice";
+import styles from "./Players.module.scss";
 
 const PlayersSelection = () => {
   const [numPlayers, setNumPlayers] = useState([]);
@@ -60,7 +60,6 @@ const PlayersSelection = () => {
               Choose Categories
             </button>
           </Link>
-          <EnterPlayer />
         </div>
       </div>
     </div>

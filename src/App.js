@@ -18,6 +18,7 @@ import {
 } from "./selectors/categories";
 import { useEffect, useState } from "react";
 import FinalJeopardy from "./components/FinalJeopardy/FinalJeopardy";
+import User from "./components/User/User";
 
 function App() {
   const showQuestion = useSelector(showQuestionSelector);
@@ -46,6 +47,7 @@ function App() {
         <Route path="category-selection" element={<Selection />} />
         <Route path="board" element={<BigBoard />} />
         <Route path="final-jeopardy" element={<FinalJeopardy />} />
+        <Route path="user" element={<User />} />
       </Routes>
     </div>
   );
