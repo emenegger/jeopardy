@@ -1,31 +1,32 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
 const NavBar = () => {
-  const players = useSelector((state) => state.players);
+  // const players = useSelector((state) => state.players);
   // add choose categories check mark once category selection has started again
 
   return (
     <div className={styles.wrapper}>
-      <Link to="/">
+      <NavLink exact to="/">
         <header>JEOPARDY!</header>
-      </Link>
+      </NavLink>
       <nav>
         <ol>
-          <Link to="/player-selection">
-            1. Choose Players {players.length > 0 && "✔️"}
-          </Link>
+          <NavLink to="/player-selection" activeClassName="active">
+            1. Choose Players
+          </NavLink>
         </ol>
         <ol>
-          <Link to="/category-selection ">2. Choose Categories</Link>
+          <NavLink to="/category-selection " activeClassName="active">
+            2. Choose Categories
+          </NavLink>
         </ol>
         <ol>
-          <Link to="/board ">3. Start Game</Link>
+          <NavLink to="/board " activeClassName="active">
+            3. Start Game
+          </NavLink>
         </ol>
-        {/* <ol>
-          <Link to="/final-jeopardy ">4. Final Jeopardy</Link>
-        </ol> */}
       </nav>
     </div>
   );

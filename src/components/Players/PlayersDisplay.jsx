@@ -4,7 +4,6 @@ import styles from "./Players.module.scss";
 
 const PlayersDisplay = () => {
   const players = useSelector((state) => state.players);
-  console.log(players);
 
   return (
     <div className={styles.playerTable}>

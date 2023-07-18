@@ -38,7 +38,12 @@ nav {
   justify-content: space-around;
   justify-self: center;
   transform: translateX(-17%);
+
+  a.active {
+    color: pink;
+  }
 }
+
 
 ol {
   padding: 0 5vw 0 5vw;

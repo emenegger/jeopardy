@@ -1,9 +1,10 @@
 export const fetchCategories = async () => {
-  console.log('fetching categories');
+  console.log("fetching categories");
   const count = 99;
-  const offset = Math.floor(Math.random(0, 1) * 25000)
-  // const offset = 25000;
-  const response = await fetch(`https://jservice.io/api/categories?count=${count}&offset=${offset}`);
+  const offset = Math.floor(Math.random(0, 1) * 25000);
+  const response = await fetch(
+    `https://jservice.io/api/categories?count=${count}&offset=${offset}`
+  );
   const data = await response.json();
   const fiveOrMoreClues = data
     .filter((d) => d.clues_count >= 10 && d.id)
@@ -12,11 +13,11 @@ export const fetchCategories = async () => {
 };
 
 export const fetchFinalJeopardy = async () => {
-  const response = await fetch('https://jservice.io/api/final');
-  const data = await response.json()
-  console.log(data)
+  const response = await fetch("https://jservice.io/api/final");
+  const data = await response.json();
+  console.log(data);
   return data[0];
-}
+};
 
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 
@@ -25,35 +26,39 @@ const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   const response = await fetch(`${CATEGORIES_QUERY}${categoryId}`);
   const data = await response.json();
-  // console.log("data", data);
-  const initClues = data.clues; 
+
+  const initClues = data.clues.sort((a, b) => a.value - b.value);
   // console.log("initClues", initClues);
-  const modifiedValsForFirstRound = initClues.map((clue) => ({
-    ...clue,
-    value: clue.value * 2,
-  }));
-  // console.log("modifiedValsForFirstRound", modifiedValsForFirstRound);
-  const modifiedValsForSecondRound = initClues.map((clue)=> ({
-    ...clue,
-    value: clue.value * 4,
-  }))
-  // console.log("modifiedValsForSecondRound", modifiedValsForSecondRound);
+
   const firstRoundVals = [200, 400, 600, 800, 1000];
   const secondRoundVals = [400, 800, 1200, 1600, 2000];
-  // for each of the round vals, find one and add
-  const getFilteredClues = (clues, requiredVals) => {
+
+  const getFullArrOfValues = (requiredVals, clues) => {
+    // console.log(clues);
     const returnArr = [];
+    // iterate through required vals
     for (let val of requiredVals) {
-      const matchedVal = clues.find((clue) => clue.value === val) || [];
-      returnArr.push(matchedVal);
+      // iterate through the initial clues
+      for (let clue of clues) {
+        // if there is a match add it to finalArr
+        if (clue.value === val) {
+          returnArr.push(clue);
+          break;
+        }
+        // if no match, get clue that is closest in value
+        if (clue.value > val) {
+          returnArr.push(clue);
+          break;
+        }
+      }
     }
+    // console.log(returnArr);
     return returnArr;
   };
+
   const vals = isDoubleJeopardy ? secondRoundVals : firstRoundVals;
-  const finalClues = isDoubleJeopardy ? modifiedValsForSecondRound : modifiedValsForFirstRound;
-  const filteredVals = getFilteredClues(finalClues, vals);
+  const filteredVals = getFullArrOfValues(vals, initClues);
   data.clues = filteredVals;
-  // console.log(data.clues);
+  console.log(data.clues);
   return data;
 };
-
