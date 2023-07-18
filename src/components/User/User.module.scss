@@ -4,7 +4,8 @@
   margin: 3rem;
   @include box;
   @include flexColumn;
-  width: 25vw;
+  // width: 25vw;
+  width: 250px;
   font-size: 1.5rem;
   form {
     box-shadow: none;

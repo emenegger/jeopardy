@@ -7,26 +7,18 @@ import styles from "./User.module.scss";
 
 const socket = io.connect("http://localhost:5001");
 
-const UserSignUp = () => {
+const UserSignUp = ({setShowInput}) => {
   const [name, setName] = useState("");
   const [socketData, setSocketData] = useState({});
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    console.log('## useEffecting');
-    socket.on("receive_user", (playerData) => {
-      console.log("## playerData", playerData);
-      // setSocketData(data);
-      dispatch(addPlayer(playerData))
-    });
-  }, [socket]);
 
   const handleChange = (e) => setName(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('## name', name)
     socket.emit("sending_user", { name });
-
+    setShowInput(prev => !prev);
   };
 
   return (

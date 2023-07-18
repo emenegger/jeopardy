@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
-const NavBar = () => {
+const NavBar = ({isUser}) => {
   // const players = useSelector((state) => state.players);
   // add choose categories check mark once category selection has started again
 
@@ -11,7 +11,7 @@ const NavBar = () => {
       <NavLink exact to="/">
         <header>JEOPARDY!</header>
       </NavLink>
-      <nav>
+      {!isUser &&<nav>
         <ol>
           <NavLink to="/player-selection">
             1. Choose Players
@@ -27,7 +27,7 @@ const NavBar = () => {
             3. Start Game
           </NavLink>
         </ol>
-      </nav>
+      </nav>}
     </div>
   );
 };

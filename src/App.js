@@ -2,7 +2,7 @@ import "./App.scss";
 import { useSelector } from "react-redux";
 import BigBoard from "./components/Board/BigBoard";
 import QuestionModal from "./components/QuestionModal/QuestionModal";
-import PlayersSelection from "./components/Players/PlayersInput";
+import PlayersSelection from "./components/Players/PlayersSelection";
 import Selection from "./components/Categories/Selection";
 import HeroPage from "./components/HeroPage/HeroPage";
 import DailyDouble from "./components/DailyDouble/DailyDouble";

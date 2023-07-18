@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
       id: socket.id,
     }
     console.log(playerData);
-    socket.emit('receive_user', playerData);
+    socket.broadcast.emit('receive_user', playerData);
   })
 });
 
