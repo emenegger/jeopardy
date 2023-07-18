@@ -21,44 +21,51 @@ export const fetchFinalJeopardy = async () => {
 
 const CATEGORIES_QUERY = "https://jservice.io/api/category?id=";
 
-// this needs serious refactoring!
 
 export const fetchCategoryDataById = async (categoryId, isDoubleJeopardy) => {
   const response = await fetch(`${CATEGORIES_QUERY}${categoryId}`);
   const data = await response.json();
 
-  const initClues = data.clues.sort((a, b) => a.value - b.value);
-  // console.log("initClues", initClues);
+  const initClues = data.clues.sort((a, b) => a.value - b.value); // I don't know if this needs to be sorted
 
   const firstRoundVals = [200, 400, 600, 800, 1000];
   const secondRoundVals = [400, 800, 1200, 1600, 2000];
 
+  const findClosestValue = (arr, num) => {
+    let closest = null;
+    let minDifference = Infinity;
+
+    for (const obj of arr) {
+      const difference = Math.abs(obj.value - num);
+      if (difference < minDifference) {
+        closest = obj;
+        minDifference = difference;
+      }
+    }
+    return closest;
+  }
+
+  // this could use some syntactic sugar!
   const getFullArrOfValues = (requiredVals, clues) => {
-    // console.log(clues);
+    let availableClues = [...clues];
     const returnArr = [];
     // iterate through required vals
     for (let val of requiredVals) {
-      // iterate through the initial clues
-      for (let clue of clues) {
-        // if there is a match add it to finalArr
-        if (clue.value === val) {
-          returnArr.push(clue);
-          break;
-        }
-        // if no match, get clue that is closest in value
-        if (clue.value > val) {
-          returnArr.push(clue);
-          break;
-        }
+      // find the clue with the closest value
+      const clueWithClosestVal = findClosestValue(availableClues, val);
+      // remove the clue to avoid duplicate clues
+      const clueIndex = availableClues.indexOf(clueWithClosestVal);
+      if (clueIndex !== -1) {
+        availableClues.splice(clueIndex, 1); // Remove the clue in-place
       }
+      // add the clue to the final array
+      returnArr.push(clueWithClosestVal);
     }
-    // console.log(returnArr);
     return returnArr;
   };
 
   const vals = isDoubleJeopardy ? secondRoundVals : firstRoundVals;
   const filteredVals = getFullArrOfValues(vals, initClues);
-  data.clues = filteredVals;
-  console.log(data.clues);
-  return data;
+  const updatedData = {...data, clues: filteredVals}
+  return updatedData;
 };

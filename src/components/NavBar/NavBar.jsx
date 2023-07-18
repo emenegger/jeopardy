@@ -13,17 +13,17 @@ const NavBar = () => {
       </NavLink>
       <nav>
         <ol>
-          <NavLink to="/player-selection" activeClassName="active">
+          <NavLink to="/player-selection">
             1. Choose Players
           </NavLink>
         </ol>
         <ol>
-          <NavLink to="/category-selection " activeClassName="active">
+          <NavLink to="/category-selection">
             2. Choose Categories
           </NavLink>
         </ol>
         <ol>
-          <NavLink to="/board " activeClassName="active">
+          <NavLink to="/board ">
             3. Start Game
           </NavLink>
         </ol>
