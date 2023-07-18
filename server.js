@@ -15,14 +15,18 @@ const io = new Server(server, {
 });
 const port = 5001;
 
-// const players = [];
-
 io.on("connection", (socket) => {
   console.log(`User connected ${socket.id}`);
-  // socket.io()
+
   socket.on('sending_user', (data) => {
-    console.log(data);
-    socket.broadcast.emit('receive_user', data);
+    // console.log(data);
+    const playerData = {
+      name: data.name,
+      points: 0,
+      id: socket.id,
+    }
+    console.log(playerData);
+    socket.emit('receive_user', playerData);
   })
 });
 

@@ -5,9 +5,13 @@ const playersSlice = createSlice({
   initialState: [],
   reducers: {
     addPlayer: (state, action) => {
-      // state = [...state, action.payload];
-      return [...state, action.payload];
-      // state.players = [...state.players, action.payload];
+      // if (!state.includes(action.payload)) return [...state, action.payload];
+      // else return state;
+      const existingPlayer = state.find(
+        (player) => player.id === action.payload.id
+      );
+      if (!existingPlayer) return [...state, action.payload];
+      return state;
     },
     addPointsToPlayer: (state, action) => {
       const i = state.findIndex((player) => player.id === action.payload.id);
