@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import { addPlayer } from "./playersSlice";
 
 import styles from "./Players.module.scss";
+import { setGameToReady } from "../Board/boardSlice";
 
 const socket = io.connect("http://localhost:5001");
 
 const PlayerWaiting = () => {
   const players = useSelector((state) => state.players);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log("##players", players);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    console.log("##clicked");
+    dispatch(setGameToReady(true));
+    socket.emit('setting_game_to_ready', { ready: true });
+    navigate("../category-selection");
   };
 
   useEffect(() => {
-    console.log("## useEffecting");
     socket.on("receive_user", (playerData) => {
       console.log("## playerData", playerData);
       // setSocketData(data);
       dispatch(addPlayer(playerData));
     });
-  }, [socket]);
+  }, [socket, dispatch]);
 
   return (
     <>
@@ -39,9 +43,11 @@ const PlayerWaiting = () => {
             <p>{player.name}</p>
           ))}
         </div>
-        <Link to={"../category-selection"}>
-          <button className={styles.goToCategoryBtn}>Ready? Start Game</button>
-        </Link>
+        {/* <Link to="../category-selection"> */}
+        <button className={styles.goToCategoryBtn} onClick={handleSubmit}>
+          Ready? Start Game
+        </button>
+        {/* </Link> */}
       </div>
     </>
   );

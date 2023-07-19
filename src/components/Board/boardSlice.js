@@ -11,6 +11,7 @@ const initialState = {
   numAnswered: 0,
   displayBoard: false,
   dailyDouble: dailyDoubleIndices,
+  playersReady: false,
 };
 
 export const boardSlice = createSlice({
@@ -39,6 +40,10 @@ export const boardSlice = createSlice({
     resetBoardData: (state) => {
       state.boardData = [];
       // state.numAnswered = 0;
+    },
+    setGameToReady: (state, action) => {
+      console.log('## setting game to ready')
+      state.playersReady = action.payload;
     }
   },
 });
@@ -49,6 +54,7 @@ export const {
   removeBoardData,
   incrementCountAnswered,
   resetBoardData,
+  setGameToReady,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

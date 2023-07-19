@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addPlayer } from "../Players/playersSlice";
+import React, { useState } from "react";
 import io from "socket.io-client";
 
 import styles from "./User.module.scss";
@@ -9,8 +7,6 @@ const socket = io.connect("http://localhost:5001");
 
 const UserSignUp = ({setShowInput}) => {
   const [name, setName] = useState("");
-  const [socketData, setSocketData] = useState({});
-  const dispatch = useDispatch()
 
 
   const handleChange = (e) => setName(e.target.value);
