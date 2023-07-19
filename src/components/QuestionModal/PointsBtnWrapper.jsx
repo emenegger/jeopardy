@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import PointsButton from "./PointsButton";
-import styles from "./Question.module.scss";
 import {
   addPointsToPlayer,
   removePointsFromPlayer,
 } from "../Players/playersSlice";
-import { useDispatch } from "react-redux";
+import io from "socket.io-client";
 
-const PointsBtnWrapper = ({ value, id, name }) => {
+import styles from "./Question.module.scss";
+
+const socket = io.connect("http://localhost:5001");
+
+const PointsBtnWrapper = ({ value, id, name, queue, setQueue }) => {
+  // should we use a useReducer here?
   const [showPosValue, setShowPosValue] = useState(false);
   const [showNegValue, setShowNegValue] = useState(false);
   const [showAddedPoints, setShowAddedPoints] = useState({
@@ -16,8 +21,20 @@ const PointsBtnWrapper = ({ value, id, name }) => {
   });
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    socket.on("buzzed_in", (data) => {
+      console.log("## someone buzzed", data);
+      if (!queue.some((obj) => obj.id === data.id))
+        setQueue((prev) => [...prev, data]);
+      else console.log("## already in queue", queue);
+    });
+    return () => {
+      socket.off("buzzed_in");
+    };
+  }, [socket, queue, setQueue]);
+
   const handleClick = (id, points, type) => {
-    console.log(`${type}ing ${points}`)
+    console.log(`${type}ing ${points}`);
     if (type === "increment") {
       dispatch(addPointsToPlayer({ id, points }));
       setShowPosValue(true);
@@ -25,6 +42,8 @@ const PointsBtnWrapper = ({ value, id, name }) => {
       setTimeout(() => {
         setShowPosValue(false);
       }, 2000);
+      // if we award points, we should clear the queue
+      setQueue([]);
     } else {
       dispatch(removePointsFromPlayer({ id, points }));
       setShowNegValue(true);
@@ -32,14 +51,21 @@ const PointsBtnWrapper = ({ value, id, name }) => {
       setTimeout(() => {
         setShowNegValue(false);
       }, 2000);
+      // if we subtract points, we should move to the next person in the queue
+      setQueue(prev => prev.filter(player => player.id !== id));
     }
   };
+
+  const isAnswering = queue[0]?.id === id;
+  console.log("## isAnswering", isAnswering, queue[0]?.name);
 
   return (
     <div>
       <div className={styles.valuePop}>{showPosValue && `+${value}`}</div>
       <div className={styles.negValuePop}>{showNegValue && `-${value}`}</div>
-      <p>{name}</p>
+      <div className={isAnswering && styles.playerNameContainer}>
+        <p>{name}</p>
+      </div>
       <div className={styles.buttons} key={id}>
         <div
           className={styles.ptsBtn}
@@ -56,7 +82,9 @@ const PointsBtnWrapper = ({ value, id, name }) => {
         </div>
         <div
           className={styles.ptsBtn}
-          onClick={() => !showAddedPoints.decrement && handleClick(id, value, "decrement")}
+          onClick={() =>
+            !showAddedPoints.decrement && handleClick(id, value, "decrement")
+          }
         >
           <PointsButton
             type={"decrement"}

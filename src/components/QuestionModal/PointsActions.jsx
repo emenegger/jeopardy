@@ -2,10 +2,14 @@ import styles from "./Question.module.scss";
 import { useSelector } from "react-redux";
 import { Divider } from "@mui/material";
 import PointsBtnWrapper from "./PointsBtnWrapper";
+import { useState } from "react";
 
 
 const PointsActions = ({ value }) => {
   const players = useSelector((state) => state.players);
+  const [queue, setQueue] = useState([]);
+  console.log('## queue', queue)
+
   return (
     <div className={styles.modalActions}>
       <Divider /> 
@@ -18,6 +22,8 @@ const PointsActions = ({ value }) => {
               id={id}
               name={name}
               key={id}
+              queue={queue}
+              setQueue={setQueue}
             />
           );
         })}

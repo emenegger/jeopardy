@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import io from "socket.io-client";
+import { v4 as uuidv4 } from "uuid";
 
 import styles from "./User.module.scss";
 
 const socket = io.connect("http://localhost:5001");
 
-const UserSignUp = ({setShowInput}) => {
+const UserSignUp = ({ setShowInput, setLocalPlayer }) => {
   const [name, setName] = useState("");
-
 
   const handleChange = (e) => setName(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('## name', name)
-    socket.emit("sending_user", { name });
-    setShowInput(prev => !prev);
+    const player = { name, id: uuidv4() };
+    console.log('## saving player as', player)
+    socket.emit("sending_user", player);
+    setLocalPlayer(player);
+    setShowInput((prev) => !prev);
   };
 
   return (

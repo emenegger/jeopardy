@@ -209,3 +209,13 @@
 .buttons {
   display: flex;
 }
+
+.playerNameContainer {
+  border: solid 3px red;
+  border-radius: 8px;
+  text-transform: capitalize;
+}
+
+.answering {
+  border: solid 1px red;
+}

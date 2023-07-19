@@ -24,14 +24,21 @@ io.on("connection", (socket) => {
   })
 
   socket.on('sending_user', (data) => {
-    // console.log(data);
+    console.log(data);
     const playerData = {
       name: data.name,
       points: 0,
-      id: socket.id,
+      id: data.id,
     }
     console.log(playerData);
     socket.broadcast.emit('receive_user', playerData);
+  });
+
+  // const times = [];
+
+  socket.on('buzzing', (data) => {
+    console.log(`User ${data.id} buzzed at:`, data);
+    socket.broadcast.emit('buzzed_in', data);
   })
 
 });
