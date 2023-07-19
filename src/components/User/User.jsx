@@ -6,18 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
 import styles from "./User.module.scss";
 import { setGameToReady } from "../Board/boardSlice";
+import { ipAddress, port } from "../../public/constants";
 
-const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`${ipAddress}${port}`);
 
 const User = () => {
-  const players = useSelector((state) => state.players);
   const gameReady = useSelector((state) => state.board.playersReady);
   const [showInput, setShowInput] = useState(true);
   const [localPlayer, setLocalPlayer] = useState({});
   const dispatch = useDispatch();
-
-  console.log("## localPlayer", localPlayer);
-  console.log("## players", players);
 
   useEffect(() => {
     socket.on("game_ready", (data) => {
@@ -28,13 +25,6 @@ const User = () => {
   return (
     <div className={styles.userContainer}>
       <NavBar isUser={true} />
-      <div>
-        {players.map((player) => (
-          <p>
-            {player.name} {player.id}
-          </p>
-        ))}
-      </div>
       {showInput ? (
         <UserSignUp
           setShowInput={setShowInput}
@@ -43,7 +33,7 @@ const User = () => {
       ) : gameReady ? (
         <Buzzer localPlayer={localPlayer} />
       ) : (
-        <h3>waiting for host to start game...</h3>
+        <h3>Welcome {localPlayer?.name}! <br/> Waiting for host to start game...</h3>
       )}
       {/* {gameReady && <Buzzer localPlayer={localPlayer}/>} */}
     </div>

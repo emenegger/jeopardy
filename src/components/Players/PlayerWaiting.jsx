@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import { addPlayer } from "./playersSlice";
 
 import styles from "./Players.module.scss";
 import { setGameToReady } from "../Board/boardSlice";
+import { ipAddress, port } from "../../public/constants";
 
-const socket = io.connect("http://localhost:5001");
+// const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`${ipAddress}${port}`);
 
 const PlayerWaiting = () => {
   const players = useSelector((state) => state.players);
@@ -34,7 +36,7 @@ const PlayerWaiting = () => {
     <>
       <div className={styles.playerSelect}>
         <h2>Welcome to Jeopardy!</h2>
-        <h3>Go to http://192.168.0.64:3000/user to join</h3>
+        <h3>Go to {ipAddress}3000/user to join</h3>
       </div>
       <div className={styles.playerSelect}>
         <h2>Players</h2>
@@ -43,11 +45,9 @@ const PlayerWaiting = () => {
             <p>{player.name}</p>
           ))}
         </div>
-        {/* <Link to="../category-selection"> */}
         <button className={styles.goToCategoryBtn} onClick={handleSubmit}>
           Ready? Start Game
         </button>
-        {/* </Link> */}
       </div>
     </>
   );

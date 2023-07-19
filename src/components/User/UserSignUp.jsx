@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import io from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
+import { ipAddress, port } from "../../public/constants";
 
 import styles from "./User.module.scss";
 
-const socket = io.connect("http://localhost:5001");
+// const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`${ipAddress}${port}`);
 
 const UserSignUp = ({ setShowInput, setLocalPlayer }) => {
   const [name, setName] = useState("");

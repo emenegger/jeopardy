@@ -6,10 +6,11 @@ import {
   removePointsFromPlayer,
 } from "../Players/playersSlice";
 import io from "socket.io-client";
+import { ipAddress, port } from "../../public/constants";
 
 import styles from "./Question.module.scss";
 
-const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`${ipAddress}${port}`);
 
 const PointsBtnWrapper = ({ value, id, name, queue, setQueue }) => {
   // should we use a useReducer here?
@@ -31,7 +32,7 @@ const PointsBtnWrapper = ({ value, id, name, queue, setQueue }) => {
     return () => {
       socket.off("buzzed_in");
     };
-  }, [socket, queue, setQueue]);
+  }, [queue, setQueue]);
 
   const handleClick = (id, points, type) => {
     console.log(`${type}ing ${points}`);

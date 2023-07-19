@@ -1,13 +1,12 @@
 import io from "socket.io-client";
-
+import { ipAddress, port } from "../../public/constants";
 import styles from "./User.module.scss";
 
-const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`${ipAddress}${port}`);
 
 const Buzzer = ({ localPlayer }) => {
   const handleClick = () => {
     console.log("## clicking");
-    // emit to the server the user's id and time
     socket.emit("buzzing", { ...localPlayer, buzzTime: Date.now() });
   };
 

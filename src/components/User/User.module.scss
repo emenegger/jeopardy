@@ -38,41 +38,9 @@
   @include flexColumn;
 }
 
-.buzzerInner {
-  width: 13vw;
-  height: 13vw;
-  border-radius: 50%;
-  // background-color: $kind-blue;
-  background: linear-gradient(to bottom, #103b84, #165bd1); 
-  border: none;
-  color: #000000;
-  text-align: center;
-  font-size: 1rem;
-  line-height: 50px;
-  cursor: pointer;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.6);
-}
-
-.buzzer {
-  margin: 2rem;
-  width: 15vw;
-  height: 15vw;
-  border-radius: 50%;
-  // background-color: #F5F5F5;
-  background: linear-gradient(to bottom, #b7b6b6, #c6c5c5);
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 1.2rem;
-  line-height: 60px;
-  cursor: pointer;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
-  @include flexColumn
-}
-
-.buzzerInner:active {
-  transform: translateY(3);
+.buttonContainer {
+  position: relative;
+  top: 20vh;
 }
 
 
