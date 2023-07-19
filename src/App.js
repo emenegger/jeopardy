@@ -7,6 +7,9 @@ import Selection from "./components/Categories/Selection";
 import HeroPage from "./components/HeroPage/HeroPage";
 import DailyDouble from "./components/DailyDouble/DailyDouble";
 import RoundModal from "./components/HeroPage/RoundModal";
+import FinalJeopardy from "./components/FinalJeopardy/FinalJeopardy";
+import User from "./components/User/User";
+import Answers from "./components/Admin/Answers";
 import { Routes, Route } from "react-router-dom";
 import {
   showQuestionSelector,
@@ -16,10 +19,7 @@ import {
   getIsDoubleJeopardy,
   getIsFinalJeopardy,
 } from "./selectors/categories";
-import { useEffect, useState } from "react";
-import FinalJeopardy from "./components/FinalJeopardy/FinalJeopardy";
-import User from "./components/User/User";
-import Answers from "./components/Admin/Answers";
+import { useState } from "react";
 
 function App() {
   const showQuestion = useSelector(showQuestionSelector);
@@ -49,7 +49,7 @@ function App() {
         <Route path="board" element={<BigBoard />} />
         <Route path="final-jeopardy" element={<FinalJeopardy />} />
         <Route path="user" element={<User />} />
-        <Route path="current-answer" element={<Answers/>}/>
+        <Route path="current-answer" element={<Answers />} />
       </Routes>
     </div>
   );
