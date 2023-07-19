@@ -8,7 +8,6 @@ import { useState } from "react";
 const PointsActions = ({ value }) => {
   const players = useSelector((state) => state.players);
   const [queue, setQueue] = useState([]);
-  console.log('## queue', queue)
 
   return (
     <div className={styles.modalActions}>

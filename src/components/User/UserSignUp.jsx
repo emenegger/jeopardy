@@ -15,7 +15,6 @@ const UserSignUp = ({ setShowInput, setLocalPlayer }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const player = { name, id: uuidv4() };
-    console.log('## saving player as', player)
     socket.emit("sending_user", player);
     setLocalPlayer(player);
     setShowInput((prev) => !prev);

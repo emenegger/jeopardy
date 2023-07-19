@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import DownloadBtn from "../Admin/DownloadBtn";
 import styles from "./NavBar.module.scss";
 
 const NavBar = ({isUser}) => {
@@ -26,6 +27,9 @@ const NavBar = ({isUser}) => {
           <NavLink to="/board ">
             3. Start Game
           </NavLink>
+        </ol>
+        <ol>
+          <DownloadBtn/>
         </ol>
       </nav>}
     </div>

@@ -8,7 +8,6 @@ import styles from "./Players.module.scss";
 import { setGameToReady } from "../Board/boardSlice";
 import { ipAddress, port } from "../../public/constants";
 
-// const socket = io.connect("http://localhost:5001");
 const socket = io.connect(`${ipAddress}${port}`);
 
 const PlayerWaiting = () => {

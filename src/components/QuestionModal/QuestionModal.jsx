@@ -22,7 +22,7 @@ const QuestionModal = ({ wager }) => {
       <div className={styles.centered}> 
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
-            <h5 className={styles.heading}>{question.category}</h5>
+            <h5 className={styles.heading}>{question.category} <span style={{textTransform: 'none'}}>for</span> {question.value}</h5>
           <button className={styles.closeBtn} onClick={handleClose}>
             <CloseIcon />
           </button>
